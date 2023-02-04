@@ -22,10 +22,11 @@ steps:
     - git config --global http.proxy http://127.0.0.1:7890
     - git config --global https.proxy http://127.0.0.1:7890
     - git clone https://github.com/ZhuLegend/321CQU_Public_Repository.git
+    - cd ./321CQU_Public_Repository
     - git checkout main
-    - cp -a -r -f ./321CQU_Public_Repository/micro_services_protobuf/ /www/services/_321CQU_package/micro_services_protobuf/
-    - cp -a -r -f ./321CQU_Public_Repository/python_package/_321CQU/ /www/services/_321CQU_package/python_package/
-    - cp -a -r -f ./321CQU_Public_Repository/python_package/micro_services_protobuf/ /www/services/_321CQU_package/python_package/
+    - cp -a -r -f ./micro_services_protobuf/ /www/services/_321CQU_package/micro_services_protobuf/
+    - cp -a -r -f ./python_package/_321CQU/ /www/services/_321CQU_package/python_package/
+    - cp -a -r -f ./python_package/micro_services_protobuf/ /www/services/_321CQU_package/python_package/
 
 trigger:
   branch:
