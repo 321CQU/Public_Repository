@@ -4,6 +4,8 @@ from pydantic import BaseModel
 from google.protobuf.json_format import ParseDict
 
 
+__all__ = ['model2protobuf', 'model_list2protobuf']
+
 MessageType = TypeVar('MessageType')
 
 
