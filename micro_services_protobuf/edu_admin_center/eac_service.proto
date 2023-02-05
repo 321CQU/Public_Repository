@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package edu_admin_center;
+
+import "micro_services_protobuf/mycqu_service/mycqu_model.proto";
+import "micro_services_protobuf/mycqu_service/mycqu_request_response.proto";
+import "micro_services_protobuf/edu_admin_center/eac_models.proto";
+
+
+service EduAdminCenter {
+    rpc ValidateAuth(mycqu_service.BaseLoginInfo) returns (ValidateAuthResponse);    // 获取用户信息
+
+    rpc FetchEnrollCourseInfo(mycqu_service.FetchEnrollCourseInfoRequest) returns (mycqu_service.FetchEnrollCourseInfoResponse);    // 获取可选课程信息
+    rpc FetchEnrollCourseItem(mycqu_service.FetchEnrollCourseItemRequest) returns (mycqu_service.FetchEnrollCourseItemResponse);    // 获取可选具体课程信息
+
+    rpc FetchExam(mycqu_service.FetchExamRequest) returns (mycqu_service.FetchExamResponse);    // 获取考试信息
+
+    rpc FetchCourseTimetable(FetchCourseTimetableRequest) returns (FetchCourseTimetableResponse);   // 获取课表
+
+    rpc FetchScore(FetchScoreRequest) returns (mycqu_service.FetchScoreResponse); // 获取成绩信息
+    rpc FetchGpaRanking(mycqu_service.BaseLoginInfo) returns (mycqu_service.GpaRanking); // 获取绩点排名信息
+}

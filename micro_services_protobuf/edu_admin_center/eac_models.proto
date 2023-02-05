@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package edu_admin_center;
+
+import "micro_services_protobuf/mycqu_service/mycqu_model.proto";
+import "micro_services_protobuf/mycqu_service/mycqu_request_response.proto";
+
+// 验证账号正确性返回值
+message ValidateAuthResponse {
+    string sid = 1; // 学生学号
+    string name = 2;    // 学生姓名
+}
+
+// 获取课表请求值
+message FetchCourseTimetableRequest {
+    mycqu_service.BaseLoginInfo login_info = 1; // 登陆信息
+    string code = 2;    // 学/工号
+    int32 offset = 3;   // 学期偏移量，0表示当前学期，1表示下学期
+}
+
+// 获取课表返回值
+message FetchCourseTimetableResponse {
+    repeated mycqu_service.CourseTimetable course_timetables = 1; // 多个课表信息
+    string start_date = 2;  // 学期起始日期，"yyyy-mm-dd"格式
+    string end_date = 3;    // 学期节数日期，"yyyy-mm-dd"格式
+}
+
+// 获取成绩请求
+message FetchScoreRequest {
+    mycqu_service.BaseLoginInfo base_login_info = 1;  // 基础登陆信息
+    string sid = 2; // 用户学号
+    bool is_minor = 3;  // 是否为辅修专业成绩
+}
