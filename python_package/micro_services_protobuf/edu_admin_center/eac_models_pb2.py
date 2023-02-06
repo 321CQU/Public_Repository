@@ -15,7 +15,7 @@ from micro_services_protobuf.mycqu_service import mycqu_model_pb2 as micro__serv
 from micro_services_protobuf.mycqu_service import mycqu_request_response_pb2 as micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n9micro_services_protobuf/edu_admin_center/eac_models.proto\x12\x10\x65\x64u_admin_center\x1a\x37micro_services_protobuf/mycqu_service/mycqu_model.proto\x1a\x42micro_services_protobuf/mycqu_service/mycqu_request_response.proto\"1\n\x14ValidateAuthResponse\x12\x0b\n\x03sid\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"m\n\x1b\x46\x65tchCourseTimetableRequest\x12\x30\n\nlogin_info\x18\x01 \x01(\x0b\x32\x1c.mycqu_service.BaseLoginInfo\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\x0e\n\x06offset\x18\x03 \x01(\x05\"\x7f\n\x1c\x46\x65tchCourseTimetableResponse\x12\x39\n\x11\x63ourse_timetables\x18\x01 \x03(\x0b\x32\x1e.mycqu_service.CourseTimetable\x12\x12\n\nstart_date\x18\x02 \x01(\t\x12\x10\n\x08\x65nd_date\x18\x03 \x01(\t\"i\n\x11\x46\x65tchScoreRequest\x12\x35\n\x0f\x62\x61se_login_info\x18\x01 \x01(\x0b\x32\x1c.mycqu_service.BaseLoginInfo\x12\x0b\n\x03sid\x18\x02 \x01(\t\x12\x10\n\x08is_minor\x18\x03 \x01(\x08\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n9micro_services_protobuf/edu_admin_center/eac_models.proto\x12\x10\x65\x64u_admin_center\x1a\x37micro_services_protobuf/mycqu_service/mycqu_model.proto\x1a\x42micro_services_protobuf/mycqu_service/mycqu_request_response.proto\"?\n\x14ValidateAuthResponse\x12\x0b\n\x03sid\x18\x01 \x01(\t\x12\x0c\n\x04\x61uth\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\"m\n\x1b\x46\x65tchCourseTimetableRequest\x12\x30\n\nlogin_info\x18\x01 \x01(\x0b\x32\x1c.mycqu_service.BaseLoginInfo\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\x0e\n\x06offset\x18\x03 \x01(\x05\"\x7f\n\x1c\x46\x65tchCourseTimetableResponse\x12\x39\n\x11\x63ourse_timetables\x18\x01 \x03(\x0b\x32\x1e.mycqu_service.CourseTimetable\x12\x12\n\nstart_date\x18\x02 \x01(\t\x12\x10\n\x08\x65nd_date\x18\x03 \x01(\t\"i\n\x11\x46\x65tchScoreRequest\x12\x35\n\x0f\x62\x61se_login_info\x18\x01 \x01(\x0b\x32\x1c.mycqu_service.BaseLoginInfo\x12\x0b\n\x03sid\x18\x02 \x01(\t\x12\x10\n\x08is_minor\x18\x03 \x01(\x08\x62\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'micro_services_protobuf.edu_admin_center.eac_models_pb2', globals())
@@ -23,11 +23,11 @@ if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   _VALIDATEAUTHRESPONSE._serialized_start=204
-  _VALIDATEAUTHRESPONSE._serialized_end=253
-  _FETCHCOURSETIMETABLEREQUEST._serialized_start=255
-  _FETCHCOURSETIMETABLEREQUEST._serialized_end=364
-  _FETCHCOURSETIMETABLERESPONSE._serialized_start=366
-  _FETCHCOURSETIMETABLERESPONSE._serialized_end=493
-  _FETCHSCOREREQUEST._serialized_start=495
-  _FETCHSCOREREQUEST._serialized_end=600
+  _VALIDATEAUTHRESPONSE._serialized_end=267
+  _FETCHCOURSETIMETABLEREQUEST._serialized_start=269
+  _FETCHCOURSETIMETABLEREQUEST._serialized_end=378
+  _FETCHCOURSETIMETABLERESPONSE._serialized_start=380
+  _FETCHCOURSETIMETABLERESPONSE._serialized_end=507
+  _FETCHSCOREREQUEST._serialized_start=509
+  _FETCHSCOREREQUEST._serialized_end=614
 # @@protoc_insertion_point(module_scope)

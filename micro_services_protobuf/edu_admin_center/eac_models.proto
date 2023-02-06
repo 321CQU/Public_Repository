@@ -7,8 +7,9 @@ import "micro_services_protobuf/mycqu_service/mycqu_request_response.proto";
 
 // 验证账号正确性返回值
 message ValidateAuthResponse {
-    string sid = 1; // 学生学号
-    string name = 2;    // 学生姓名
+    string sid = 1; // 学号
+    string auth = 2;    // 统一身份认证账号
+    string name = 3;    // 姓名
 }
 
 // 获取课表请求值
