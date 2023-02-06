@@ -17,6 +17,7 @@ service MycquFetcher {
     rpc FetchCurrSessionInfo(BaseLoginInfo) returns (CquSessionInfo);   // 获取当前学期起止日信息
     rpc FetchAllSessionInfo(BaseLoginInfo) returns (FetchAllSessionInfoResponse);   // 获取全部学期起止日信息
     rpc FetchCourseTimetable(FetchCourseTimetableRequest) returns (FetchCourseTimetableResponse);   // 获取课表
+    rpc FetchEnrollTimetable(FetchEnrollTimetableRequest) returns (FetchCourseTimetableResponse);   // 获取选课信息
 
     rpc FetchScore(FetchScoreRequest) returns (FetchScoreResponse); // 获取成绩信息
     rpc FetchGpaRanking(BaseLoginInfo) returns (GpaRanking); // 获取绩点排名信息

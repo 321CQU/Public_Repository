@@ -48,6 +48,12 @@ message FetchCourseTimetableResponse {
     repeated CourseTimetable course_timetables = 1; // 多个课表信息
 }
 
+// 获取选课信息请求值
+message FetchEnrollTimetableRequest {
+    BaseLoginInfo base_login_info = 1;  // 基础登陆信息
+    string code = 2;    // 学号
+}
+
 // enroll模块
 
 // 获取可选课程信息请求值

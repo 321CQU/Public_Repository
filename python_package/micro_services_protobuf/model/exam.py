@@ -1,5 +1,5 @@
 from typing import Optional, List
-from datetime import date, time
+import datetime
 
 from pydantic import BaseModel, Field
 
@@ -15,7 +15,7 @@ class Invigilator(BaseModel):
     name: str = Field(title="监考员姓名")
     """监考员姓名"""
     dept: str = Field(title="监考员所在学院")
-    """监考员所在学院（可能是简称，如 :obj:`"数统"`）"""
+    """监考员所在学院（可能是简称，如 数统）"""
 
     class Config:
         title = "监考员信息"
@@ -41,11 +41,11 @@ class Exam(BaseModel):
     """考场地点"""
     stu_num: int = Field(title="考场人数")
     """考场人数"""
-    date: date = Field(title="考试日期")
+    date: datetime.date = Field(title="考试日期")
     """考试日期"""
-    start_time: time = Field(title="考试开始时间")
+    start_time: datetime.time = Field(title="考试开始时间")
     """考试开始时间"""
-    end_time: time = Field(title="考试结束时间")
+    end_time: datetime.time = Field(title="考试结束时间")
     """考试结束时间"""
     week: int = Field(title="周次")
     """周次"""

@@ -55,6 +55,11 @@ class MycquFetcherStub(object):
                 request_serializer=micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.FetchCourseTimetableRequest.SerializeToString,
                 response_deserializer=micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.FetchCourseTimetableResponse.FromString,
                 )
+        self.FetchEnrollTimetable = channel.unary_unary(
+                '/mycqu_service.MycquFetcher/FetchEnrollTimetable',
+                request_serializer=micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.FetchEnrollTimetableRequest.SerializeToString,
+                response_deserializer=micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.FetchCourseTimetableResponse.FromString,
+                )
         self.FetchScore = channel.unary_unary(
                 '/mycqu_service.MycquFetcher/FetchScore',
                 request_serializer=micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.FetchScoreRequest.SerializeToString,
@@ -126,6 +131,13 @@ class MycquFetcherServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def FetchEnrollTimetable(self, request, context):
+        """获取选课信息
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def FetchScore(self, request, context):
         """获取成绩信息
         """
@@ -181,6 +193,11 @@ def add_MycquFetcherServicer_to_server(servicer, server):
             'FetchCourseTimetable': grpc.unary_unary_rpc_method_handler(
                     servicer.FetchCourseTimetable,
                     request_deserializer=micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.FetchCourseTimetableRequest.FromString,
+                    response_serializer=micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.FetchCourseTimetableResponse.SerializeToString,
+            ),
+            'FetchEnrollTimetable': grpc.unary_unary_rpc_method_handler(
+                    servicer.FetchEnrollTimetable,
+                    request_deserializer=micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.FetchEnrollTimetableRequest.FromString,
                     response_serializer=micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.FetchCourseTimetableResponse.SerializeToString,
             ),
             'FetchScore': grpc.unary_unary_rpc_method_handler(
@@ -335,6 +352,23 @@ class MycquFetcher(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/mycqu_service.MycquFetcher/FetchCourseTimetable',
             micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.FetchCourseTimetableRequest.SerializeToString,
+            micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.FetchCourseTimetableResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def FetchEnrollTimetable(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/mycqu_service.MycquFetcher/FetchEnrollTimetable',
+            micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.FetchEnrollTimetableRequest.SerializeToString,
             micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.FetchCourseTimetableResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

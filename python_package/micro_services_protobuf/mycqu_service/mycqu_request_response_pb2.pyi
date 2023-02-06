@@ -100,6 +100,14 @@ class FetchEnrollCourseItemResponse(_message.Message):
     enroll_course_items: _containers.RepeatedCompositeFieldContainer[_mycqu_model_pb2.EnrollCourseItem]
     def __init__(self, enroll_course_items: _Optional[_Iterable[_Union[_mycqu_model_pb2.EnrollCourseItem, _Mapping]]] = ...) -> None: ...
 
+class FetchEnrollTimetableRequest(_message.Message):
+    __slots__ = ["base_login_info", "code"]
+    BASE_LOGIN_INFO_FIELD_NUMBER: _ClassVar[int]
+    CODE_FIELD_NUMBER: _ClassVar[int]
+    base_login_info: BaseLoginInfo
+    code: str
+    def __init__(self, base_login_info: _Optional[_Union[BaseLoginInfo, _Mapping]] = ..., code: _Optional[str] = ...) -> None: ...
+
 class FetchExamRequest(_message.Message):
     __slots__ = ["base_login_info", "stu_id"]
     BASE_LOGIN_INFO_FIELD_NUMBER: _ClassVar[int]

@@ -7,6 +7,11 @@ from pydantic import BaseModel, Field
 __all__ = ['CQUSession', 'CQUSessionInfo']
 
 
+SESSION_RE: ClassVar = re.compile("^([0-9]{4})年?(春|秋)$")
+_SPECIAL_IDS: ClassVar[Tuple[int, ...]] = (
+    239259, 102, 101, 103, 1028, 1029, 1030, 1032)  # 2015 ~ 2018
+
+
 class CQUSession(BaseModel):
     """
     重大的某一学期
@@ -15,9 +20,6 @@ class CQUSession(BaseModel):
     """主要行课年份"""
     is_autumn: bool = Field(title="是否为秋冬季学期")
     """是否为秋冬季学期"""
-    SESSION_RE: ClassVar = re.compile("^([0-9]{4})年?(春|秋)$")
-    _SPECIAL_IDS: ClassVar[Tuple[int, ...]] = (
-        239259, 102, 101, 103, 1028, 1029, 1030, 1032)  # 2015 ~ 2018
 
     class Config:
         title = "重大的某一学期"
@@ -37,7 +39,7 @@ class CQUSession(BaseModel):
         if self.year >= 2019:
             return (self.year - 1503) * 2 + int(self.is_autumn) + 1
         elif 2015 <= self.year <= 2018:
-            return self._SPECIAL_IDS[(self.year - 2015) * 2 + int(self.is_autumn)]
+            return _SPECIAL_IDS[(self.year - 2015) * 2 + int(self.is_autumn)]
         else:
             return (2015 - self.year) * 2 - int(self.is_autumn)
 
@@ -56,7 +58,7 @@ class CQUSession(BaseModel):
         :return: 对应的学期
         :rtype: CQUSession
         """
-        match = CQUSession.SESSION_RE.match(string)
+        match = SESSION_RE.match(string)
         if match:
             return CQUSession(
                 year=match[1],
