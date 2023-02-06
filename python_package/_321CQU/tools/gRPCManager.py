@@ -1,5 +1,5 @@
 from contextlib import asynccontextmanager
-from enum import StrEnum
+from enum import Enum
 from typing import Tuple
 
 from grpc.aio import insecure_channel
@@ -14,7 +14,7 @@ from .Singleton import Singleton
 __all__ = ['gRPCManager', 'ServiceEnum', 'MockGRPCManager']
 
 
-class ServiceEnum(StrEnum):
+class ServiceEnum(str, Enum):
     NotificationCenter = 'notification_center'
     MycquService = 'mycqu_service'
     CardService = 'mycqu_service'
