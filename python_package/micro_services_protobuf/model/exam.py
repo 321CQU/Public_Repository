@@ -35,7 +35,7 @@ class Exam(BaseModel):
     """选课系统中考试批次的内部id"""
     building: str = Field(title="考场楼栋")
     """考场楼栋"""
-    floor: int = Field(title="考场楼层")
+    floor: Optional[int] = Field(title="考场楼层")
     """考场楼层"""
     room: str = Field(title="考场地点")
     """考场地点"""

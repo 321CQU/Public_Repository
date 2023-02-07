@@ -33,17 +33,17 @@ class GpaRanking(BaseModel):
     """
     gpa: float = Field(title="学生总绩点")
     """学生总绩点"""
-    majorRanking: Optional[int] = Field(title="专业排名")
+    major_ranking: Optional[int] = Field(title="专业排名")
     """专业排名"""
-    gradeRanking: Optional[int] = Field(title="年级排名")
+    grade_ranking: Optional[int] = Field(title="年级排名")
     """年级排名"""
-    classRanking: Optional[int] = Field(title="班级排名")
+    class_ranking: Optional[int] = Field(title="班级排名")
     """班级排名"""
-    weightedAvg: float = Field(title="加权平均分")
+    weighted_avg: float = Field(title="加权平均分")
     """加权平均分"""
-    minorWeightedAvg: Optional[float] = Field(title="辅修加权平均分")
+    minor_weighted_avg: Optional[float] = Field(title="辅修加权平均分")
     """辅修加权平均分"""
-    minorGpa: Optional[float] = Field(title="辅修绩点")
+    minor_gpa: Optional[float] = Field(title="辅修绩点")
     """辅修绩点"""
 
     class Config:
