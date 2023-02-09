@@ -74,12 +74,14 @@ class CourseTimetable(_message.Message):
     def __init__(self, course: _Optional[_Union[Course, _Mapping]] = ..., stu_num: _Optional[int] = ..., classroom: _Optional[str] = ..., weeks: _Optional[_Iterable[_Union[Period, _Mapping]]] = ..., day_time: _Optional[_Union[CourseDayTime, _Mapping]] = ..., whole_week: bool = ..., classroom_name: _Optional[str] = ..., expr_projects: _Optional[_Iterable[str]] = ...) -> None: ...
 
 class CquSession(_message.Message):
-    __slots__ = ["is_autumn", "year"]
+    __slots__ = ["id", "is_autumn", "year"]
+    ID_FIELD_NUMBER: _ClassVar[int]
     IS_AUTUMN_FIELD_NUMBER: _ClassVar[int]
     YEAR_FIELD_NUMBER: _ClassVar[int]
+    id: int
     is_autumn: bool
     year: int
-    def __init__(self, year: _Optional[int] = ..., is_autumn: bool = ...) -> None: ...
+    def __init__(self, id: _Optional[int] = ..., year: _Optional[int] = ..., is_autumn: bool = ...) -> None: ...
 
 class CquSessionInfo(_message.Message):
     __slots__ = ["begin_date", "end_date", "session"]

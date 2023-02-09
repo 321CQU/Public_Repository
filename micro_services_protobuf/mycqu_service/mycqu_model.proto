@@ -51,8 +51,9 @@ message EnergyFees {
 
 // 重庆大学学期信息
 message CquSession {
-    uint32 year = 1;    // 学期年份
-    bool is_autumn = 2; // 是否为秋季学期
+    uint32 id = 1;  // 学期ID
+    uint32 year = 2;    // 学期年份
+    bool is_autumn = 3; // 是否为秋季学期
 }
 
 // 学期的一些额外信息
