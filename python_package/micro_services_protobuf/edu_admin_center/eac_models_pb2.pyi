@@ -38,11 +38,13 @@ class FetchScoreRequest(_message.Message):
     def __init__(self, base_login_info: _Optional[_Union[_mycqu_request_response_pb2.BaseLoginInfo, _Mapping]] = ..., sid: _Optional[str] = ..., is_minor: bool = ...) -> None: ...
 
 class ValidateAuthResponse(_message.Message):
-    __slots__ = ["auth", "name", "sid"]
+    __slots__ = ["auth", "name", "sid", "uid"]
     AUTH_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     SID_FIELD_NUMBER: _ClassVar[int]
+    UID_FIELD_NUMBER: _ClassVar[int]
     auth: str
     name: str
     sid: str
-    def __init__(self, sid: _Optional[str] = ..., auth: _Optional[str] = ..., name: _Optional[str] = ...) -> None: ...
+    uid: str
+    def __init__(self, sid: _Optional[str] = ..., auth: _Optional[str] = ..., name: _Optional[str] = ..., uid: _Optional[str] = ...) -> None: ...
