@@ -112,7 +112,7 @@ class WechatStub(object):
         """
         self.SetUserOpenId = channel.unary_unary(
                 '/notification_center.Wechat/SetUserOpenId',
-                request_serializer=micro__services__protobuf_dot_notification__center_dot_apns__pb2.SetUserApnsRequest.SerializeToString,
+                request_serializer=micro__services__protobuf_dot_notification__center_dot_wechat__pb2.SetUserOpenIdRequest.SerializeToString,
                 response_deserializer=micro__services__protobuf_dot_common__pb2.DefaultResponse.FromString,
                 )
         self.HandleWechatServerEvent = channel.unary_unary(
@@ -142,7 +142,7 @@ def add_WechatServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'SetUserOpenId': grpc.unary_unary_rpc_method_handler(
                     servicer.SetUserOpenId,
-                    request_deserializer=micro__services__protobuf_dot_notification__center_dot_apns__pb2.SetUserApnsRequest.FromString,
+                    request_deserializer=micro__services__protobuf_dot_notification__center_dot_wechat__pb2.SetUserOpenIdRequest.FromString,
                     response_serializer=micro__services__protobuf_dot_common__pb2.DefaultResponse.SerializeToString,
             ),
             'HandleWechatServerEvent': grpc.unary_unary_rpc_method_handler(
@@ -172,7 +172,7 @@ class Wechat(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/notification_center.Wechat/SetUserOpenId',
-            micro__services__protobuf_dot_notification__center_dot_apns__pb2.SetUserApnsRequest.SerializeToString,
+            micro__services__protobuf_dot_notification__center_dot_wechat__pb2.SetUserOpenIdRequest.SerializeToString,
             micro__services__protobuf_dot_common__pb2.DefaultResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -10,7 +10,7 @@ message ValidateAuthResponse {
     string sid = 1; // 学号
     string auth = 2;    // 统一身份认证账号
     string name = 3;    // 姓名
-    string uid = 4;  // 321CQU唯一身份标识符
+    bytes uid = 4;  // 321CQU唯一身份标识符
 }
 
 // 获取课表请求值

@@ -46,5 +46,5 @@ class ValidateAuthResponse(_message.Message):
     auth: str
     name: str
     sid: str
-    uid: str
-    def __init__(self, sid: _Optional[str] = ..., auth: _Optional[str] = ..., name: _Optional[str] = ..., uid: _Optional[str] = ...) -> None: ...
+    uid: bytes
+    def __init__(self, sid: _Optional[str] = ..., auth: _Optional[str] = ..., name: _Optional[str] = ..., uid: _Optional[bytes] = ...) -> None: ...

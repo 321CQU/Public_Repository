@@ -12,6 +12,6 @@ service Apns {
 }
 
 service Wechat {
-    rpc SetUserOpenId(SetUserApnsRequest) returns (common.DefaultResponse);
+    rpc SetUserOpenId(SetUserOpenIdRequest) returns (common.DefaultResponse);
     rpc HandleWechatServerEvent(HandleWechatServerEventRequest) returns (common.DefaultResponse);
 }

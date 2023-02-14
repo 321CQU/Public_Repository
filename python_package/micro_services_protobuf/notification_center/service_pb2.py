@@ -16,7 +16,7 @@ from micro_services_protobuf.notification_center import apns_pb2 as micro__servi
 from micro_services_protobuf.notification_center import wechat_pb2 as micro__services__protobuf_dot_notification__center_dot_wechat__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n9micro_services_protobuf/notification_center/service.proto\x12\x13notification_center\x1a$micro_services_protobuf/common.proto\x1a\x36micro_services_protobuf/notification_center/apns.proto\x1a\x38micro_services_protobuf/notification_center/wechat.proto2\xbc\x01\n\x04\x41pns\x12O\n\x0bSetUserApns\x12\'.notification_center.SetUserApnsRequest\x1a\x17.common.DefaultResponse\x12\x63\n\x16SendNotificationToUser\x12\x30.notification_center.SendApnsNotificationRequest\x1a\x17.common.DefaultResponse2\xc4\x01\n\x06Wechat\x12Q\n\rSetUserOpenId\x12\'.notification_center.SetUserApnsRequest\x1a\x17.common.DefaultResponse\x12g\n\x17HandleWechatServerEvent\x12\x33.notification_center.HandleWechatServerEventRequest\x1a\x17.common.DefaultResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n9micro_services_protobuf/notification_center/service.proto\x12\x13notification_center\x1a$micro_services_protobuf/common.proto\x1a\x36micro_services_protobuf/notification_center/apns.proto\x1a\x38micro_services_protobuf/notification_center/wechat.proto2\xbc\x01\n\x04\x41pns\x12O\n\x0bSetUserApns\x12\'.notification_center.SetUserApnsRequest\x1a\x17.common.DefaultResponse\x12\x63\n\x16SendNotificationToUser\x12\x30.notification_center.SendApnsNotificationRequest\x1a\x17.common.DefaultResponse2\xc6\x01\n\x06Wechat\x12S\n\rSetUserOpenId\x12).notification_center.SetUserOpenIdRequest\x1a\x17.common.DefaultResponse\x12g\n\x17HandleWechatServerEvent\x12\x33.notification_center.HandleWechatServerEventRequest\x1a\x17.common.DefaultResponseb\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'micro_services_protobuf.notification_center.service_pb2', globals())
@@ -26,5 +26,5 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _APNS._serialized_start=235
   _APNS._serialized_end=423
   _WECHAT._serialized_start=426
-  _WECHAT._serialized_end=622
+  _WECHAT._serialized_end=624
 # @@protoc_insertion_point(module_scope)
