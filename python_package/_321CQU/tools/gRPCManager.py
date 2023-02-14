@@ -1,50 +1,14 @@
 from contextlib import asynccontextmanager
-from enum import Enum
 from typing import Tuple
 
 from grpc.aio import insecure_channel
-from micro_services_protobuf.notification_center import service_pb2_grpc as notification_grpc
-from micro_services_protobuf.mycqu_service import mycqu_service_pb2_grpc as mycqu_grpc
-from micro_services_protobuf.edu_admin_center import eac_service_pb2_grpc as eac_grpc
 
-from .._mock import MockApnStub
 from .ConfigHandler import _CONFIG_HANDLER, ConfigHandler
 from .Singleton import Singleton
 
-__all__ = ['gRPCManager', 'ServiceEnum', 'MockGRPCManager']
+__all__ = ['gRPCManager', 'MockGRPCManager']
 
-
-class ServiceEnum(str, Enum):
-    ApnsService = 'notification_center'
-    SubscribeService = 'notification_center'
-    WechatService = 'notification_center'
-
-    MycquService = 'mycqu_service'
-    CardService = 'mycqu_service'
-
-    EduAdminCenter = 'edu_admin_center'
-
-    def _get_stub_class(self):
-        if self == ServiceEnum.ApnsService:
-            return notification_grpc.ApnsStub
-        elif self == ServiceEnum.SubscribeService:
-            return notification_grpc.SubscribeStub
-        elif self == ServiceEnum.WechatService:
-            return notification_grpc.WechatStub
-        elif self == ServiceEnum.MycquService:
-            return mycqu_grpc.MycquFetcherStub
-        elif self == ServiceEnum.CardService:
-            return mycqu_grpc.CardFetcherStub
-        elif self == ServiceEnum.EduAdminCenter:
-            return eac_grpc.EduAdminCenterStub
-        else:
-            raise RuntimeError("未提供对应服务Stub")
-
-    def _get_mock_stub_class(self):
-        if self == ServiceEnum.ApnsService:
-            return MockApnStub
-        else:
-            raise RuntimeError("未提供对应Mock")
+from ..service import ServiceEnum
 
 
 class gRPCManager(metaclass=Singleton):
@@ -67,16 +31,19 @@ class gRPCManager(metaclass=Singleton):
             })
 
     def get_service_config(self, service: ServiceEnum) -> Tuple[str, str]:
-        return (self._service_host[service.value + "_service_host"],
-                self._service_ports[service.value + "_service_port"])
+        return (self._service_host[service.service_name + "_service_host"],
+                self._service_ports[service.service_name + "_service_port"])
 
     @asynccontextmanager
     async def get_stub(self, service: ServiceEnum):
+        if service.is_http_service:
+            raise RuntimeError("该服务不是gRPC服务")
+
         target = service._get_stub_class()
 
         if target is not None:
-            host = self._service_host[service.value + "_service_host"]
-            port = self._service_ports[service.value + "_service_port"]
+            host = self._service_host[service.service_name + "_service_host"]
+            port = self._service_ports[service.service_name + "_service_port"]
             target_url = host + ":" + port
             async with insecure_channel(target_url) as channel:
                 yield target(channel)
