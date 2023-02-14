@@ -16,11 +16,5 @@ class SqlManager(ABC):
         pass
 
     @abstractmethod
-    async def execute(self, sql: str, parameters: Iterable[Any] = None) -> AbstractAioCursor:
-        pass
-
-    @abstractmethod
-    async def executemany(
-            self, sql: str, parameters: Iterable[Iterable[Any]]
-    ) -> AbstractAioCursor:
+    async def cursor(self) -> AbstractAioCursor:
         pass
