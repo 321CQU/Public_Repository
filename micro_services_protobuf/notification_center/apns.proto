@@ -2,20 +2,15 @@ syntax = "proto3";
 
 package notification_center;
 
-import "micro_services_protobuf/common.proto";
-
-service Apns {
-    rpc SetUserApns(SetUserApnsRequest) returns (common.DefaultResponse);
-    rpc SendNotificationToUser(SendNotificationRequest) returns (common.DefaultResponse);
-}
 
 // 设置用户Apns请求的参数
 message SetUserApnsRequest {
-    string sid = 1; // 用户学号
+    bytes uid = 1; // 用户身份标识
     string apn = 2; // 用户apn
 }
 
-message SendNotificationRequest {
+// 发送iOS设备通知
+message SendApnsNotificationRequest {
     message AppleNotification {
         message AppleAlert {
             string title = 1;   // 通知标题
@@ -28,6 +23,6 @@ message SendNotificationRequest {
         string category = 3;    // 通知的类型，为空字符串则不发送该字段
     }
 
-    string sid = 1; // 用户学号
+    bytes uid = 1; // 用户身份标识
     AppleNotification notification = 2;     // 通知信息设置
 }

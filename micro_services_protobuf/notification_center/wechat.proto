@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package notification_center;
+
+// 设置用户openid请求值
+message SetUserOpenIdRequest {
+    bytes uid = 1;  // 用户身份标识符
+    string code = 2;    // 小程序openid请求码
+}
+
+// 处理微信发送通知
+message HandleWechatServerEventRequest {
+    string openid = 1;  // 用户openID
+    string template_id = 2; // 小程序模版ID
+    bool is_accept = 3;   // 是否为接受通知
+}

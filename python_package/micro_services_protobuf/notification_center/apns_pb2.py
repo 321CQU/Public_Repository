@@ -11,24 +11,21 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from micro_services_protobuf import common_pb2 as micro__services__protobuf_dot_common__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n6micro_services_protobuf/notification_center/apns.proto\x12\x13notification_center\x1a$micro_services_protobuf/common.proto\".\n\x12SetUserApnsRequest\x12\x0b\n\x03sid\x18\x01 \x01(\t\x12\x0b\n\x03\x61pn\x18\x02 \x01(\t\"\xdc\x02\n\x17SendNotificationRequest\x12\x0b\n\x03sid\x18\x01 \x01(\t\x12T\n\x0cnotification\x18\x02 \x01(\x0b\x32>.notification_center.SendNotificationRequest.AppleNotification\x1a\xdd\x01\n\x11\x41ppleNotification\x12X\n\x05\x61lert\x18\x01 \x01(\x0b\x32I.notification_center.SendNotificationRequest.AppleNotification.AppleAlert\x12\r\n\x05\x62\x61\x64ge\x18\x02 \x01(\x05\x12\x10\n\x08\x63\x61tegory\x18\x03 \x01(\t\x1aM\n\nAppleAlert\x12\r\n\x05title\x18\x01 \x01(\t\x12\x15\n\x08subtitle\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x0c\n\x04\x62ody\x18\x03 \x01(\tB\x0b\n\t_subtitle2\xb8\x01\n\x04\x41pns\x12O\n\x0bSetUserApns\x12\'.notification_center.SetUserApnsRequest\x1a\x17.common.DefaultResponse\x12_\n\x16SendNotificationToUser\x12,.notification_center.SendNotificationRequest\x1a\x17.common.DefaultResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n6micro_services_protobuf/notification_center/apns.proto\x12\x13notification_center\".\n\x12SetUserApnsRequest\x12\x0b\n\x03uid\x18\x01 \x01(\x0c\x12\x0b\n\x03\x61pn\x18\x02 \x01(\t\"\xe8\x02\n\x1bSendApnsNotificationRequest\x12\x0b\n\x03uid\x18\x01 \x01(\x0c\x12X\n\x0cnotification\x18\x02 \x01(\x0b\x32\x42.notification_center.SendApnsNotificationRequest.AppleNotification\x1a\xe1\x01\n\x11\x41ppleNotification\x12\\\n\x05\x61lert\x18\x01 \x01(\x0b\x32M.notification_center.SendApnsNotificationRequest.AppleNotification.AppleAlert\x12\r\n\x05\x62\x61\x64ge\x18\x02 \x01(\x05\x12\x10\n\x08\x63\x61tegory\x18\x03 \x01(\t\x1aM\n\nAppleAlert\x12\r\n\x05title\x18\x01 \x01(\t\x12\x15\n\x08subtitle\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x0c\n\x04\x62ody\x18\x03 \x01(\tB\x0b\n\t_subtitleb\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'micro_services_protobuf.notification_center.apns_pb2', globals())
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _SETUSERAPNSREQUEST._serialized_start=117
-  _SETUSERAPNSREQUEST._serialized_end=163
-  _SENDNOTIFICATIONREQUEST._serialized_start=166
-  _SENDNOTIFICATIONREQUEST._serialized_end=514
-  _SENDNOTIFICATIONREQUEST_APPLENOTIFICATION._serialized_start=293
-  _SENDNOTIFICATIONREQUEST_APPLENOTIFICATION._serialized_end=514
-  _SENDNOTIFICATIONREQUEST_APPLENOTIFICATION_APPLEALERT._serialized_start=437
-  _SENDNOTIFICATIONREQUEST_APPLENOTIFICATION_APPLEALERT._serialized_end=514
-  _APNS._serialized_start=517
-  _APNS._serialized_end=701
+  _SETUSERAPNSREQUEST._serialized_start=79
+  _SETUSERAPNSREQUEST._serialized_end=125
+  _SENDAPNSNOTIFICATIONREQUEST._serialized_start=128
+  _SENDAPNSNOTIFICATIONREQUEST._serialized_end=488
+  _SENDAPNSNOTIFICATIONREQUEST_APPLENOTIFICATION._serialized_start=263
+  _SENDAPNSNOTIFICATIONREQUEST_APPLENOTIFICATION._serialized_end=488
+  _SENDAPNSNOTIFICATIONREQUEST_APPLENOTIFICATION_APPLEALERT._serialized_start=411
+  _SENDAPNSNOTIFICATIONREQUEST_APPLENOTIFICATION_APPLEALERT._serialized_end=488
 # @@protoc_insertion_point(module_scope)

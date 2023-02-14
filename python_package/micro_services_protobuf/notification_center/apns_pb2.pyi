@@ -1,12 +1,11 @@
-from micro_services_protobuf import common_pb2 as _common_pb2
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from typing import ClassVar as _ClassVar, Mapping as _Mapping, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
-class SendNotificationRequest(_message.Message):
-    __slots__ = ["notification", "sid"]
+class SendApnsNotificationRequest(_message.Message):
+    __slots__ = ["notification", "uid"]
     class AppleNotification(_message.Message):
         __slots__ = ["alert", "badge", "category"]
         class AppleAlert(_message.Message):
@@ -21,20 +20,20 @@ class SendNotificationRequest(_message.Message):
         ALERT_FIELD_NUMBER: _ClassVar[int]
         BADGE_FIELD_NUMBER: _ClassVar[int]
         CATEGORY_FIELD_NUMBER: _ClassVar[int]
-        alert: SendNotificationRequest.AppleNotification.AppleAlert
+        alert: SendApnsNotificationRequest.AppleNotification.AppleAlert
         badge: int
         category: str
-        def __init__(self, alert: _Optional[_Union[SendNotificationRequest.AppleNotification.AppleAlert, _Mapping]] = ..., badge: _Optional[int] = ..., category: _Optional[str] = ...) -> None: ...
+        def __init__(self, alert: _Optional[_Union[SendApnsNotificationRequest.AppleNotification.AppleAlert, _Mapping]] = ..., badge: _Optional[int] = ..., category: _Optional[str] = ...) -> None: ...
     NOTIFICATION_FIELD_NUMBER: _ClassVar[int]
-    SID_FIELD_NUMBER: _ClassVar[int]
-    notification: SendNotificationRequest.AppleNotification
-    sid: str
-    def __init__(self, sid: _Optional[str] = ..., notification: _Optional[_Union[SendNotificationRequest.AppleNotification, _Mapping]] = ...) -> None: ...
+    UID_FIELD_NUMBER: _ClassVar[int]
+    notification: SendApnsNotificationRequest.AppleNotification
+    uid: bytes
+    def __init__(self, uid: _Optional[bytes] = ..., notification: _Optional[_Union[SendApnsNotificationRequest.AppleNotification, _Mapping]] = ...) -> None: ...
 
 class SetUserApnsRequest(_message.Message):
-    __slots__ = ["apn", "sid"]
+    __slots__ = ["apn", "uid"]
     APN_FIELD_NUMBER: _ClassVar[int]
-    SID_FIELD_NUMBER: _ClassVar[int]
+    UID_FIELD_NUMBER: _ClassVar[int]
     apn: str
-    sid: str
-    def __init__(self, sid: _Optional[str] = ..., apn: _Optional[str] = ...) -> None: ...
+    uid: bytes
+    def __init__(self, uid: _Optional[bytes] = ..., apn: _Optional[str] = ...) -> None: ...

@@ -3,7 +3,7 @@ from enum import Enum
 from typing import Tuple
 
 from grpc.aio import insecure_channel
-from micro_services_protobuf.notification_center import apns_pb2_grpc as apns_grpc
+from micro_services_protobuf.notification_center import service_pb2_grpc as notification_grpc
 from micro_services_protobuf.mycqu_service import mycqu_service_pb2_grpc as mycqu_grpc
 from micro_services_protobuf.edu_admin_center import eac_service_pb2_grpc as eac_grpc
 
@@ -15,14 +15,22 @@ __all__ = ['gRPCManager', 'ServiceEnum', 'MockGRPCManager']
 
 
 class ServiceEnum(str, Enum):
-    NotificationCenter = 'notification_center'
+    ApnsService = 'notification_center'
+    SubscribeService = 'notification_center'
+    WechatService = 'notification_center'
+
     MycquService = 'mycqu_service'
     CardService = 'mycqu_service'
+
     EduAdminCenter = 'edu_admin_center'
 
     def _get_stub_class(self):
-        if self == ServiceEnum.NotificationCenter:
-            return apns_grpc.ApnsStub
+        if self == ServiceEnum.ApnsService:
+            return notification_grpc.ApnsStub
+        elif self == ServiceEnum.SubscribeService:
+            return notification_grpc.SubscribeStub
+        elif self == ServiceEnum.WechatService:
+            return notification_grpc.WechatStub
         elif self == ServiceEnum.MycquService:
             return mycqu_grpc.MycquFetcherStub
         elif self == ServiceEnum.CardService:
@@ -33,7 +41,7 @@ class ServiceEnum(str, Enum):
             raise RuntimeError("未提供对应服务Stub")
 
     def _get_mock_stub_class(self):
-        if self == ServiceEnum.NotificationCenter:
+        if self == ServiceEnum.ApnsService:
             return MockApnStub
         else:
             raise RuntimeError("未提供对应Mock")

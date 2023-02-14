@@ -4,5 +4,5 @@ from .gRPCManager import *
 from .protobufBridge import *
 from .gRPCMethodErrorHandler import *
 
-__all__ = ['ConfigHandler', 'Singleton', 'singleton', 'gRPCManager', 'MockGRPCManager', 'ServiceEnum',
+__all__ = ['ConfigHandler', 'Singleton', 'singleton', 'gRPCManager', 'MockGRPCManager',
            'model2protobuf', 'model_list2protobuf', 'grpc_method_error_handler']
