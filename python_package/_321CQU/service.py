@@ -11,6 +11,7 @@ class ServiceEnum(str, Enum):
 
     ApnsService = 'apns_service'
     WechatService = 'wechat_service'
+    NotificationService = 'notification_service'
 
     MycquService = 'mycqu_service'
     CardService = 'card_service'
@@ -24,6 +25,8 @@ class ServiceEnum(str, Enum):
         elif self == ServiceEnum.ApnsService:
             return 'notification_center'
         elif self == ServiceEnum.WechatService:
+            return 'notification_center'
+        elif self == ServiceEnum.NotificationService:
             return 'notification_center'
         elif self == ServiceEnum.MycquService:
             return 'mycqu_service'
@@ -44,6 +47,8 @@ class ServiceEnum(str, Enum):
             return notification_grpc.ApnsStub
         elif self == ServiceEnum.WechatService:
             return notification_grpc.WechatStub
+        elif self == ServiceEnum.NotificationService:
+            return notification_grpc.NotificationStub
         elif self == ServiceEnum.MycquService:
             return mycqu_grpc.MycquFetcherStub
         elif self == ServiceEnum.CardService:

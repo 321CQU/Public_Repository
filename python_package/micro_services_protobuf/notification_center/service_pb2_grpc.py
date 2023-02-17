@@ -4,6 +4,7 @@ import grpc
 
 from micro_services_protobuf import common_pb2 as micro__services__protobuf_dot_common__pb2
 from micro_services_protobuf.notification_center import apns_pb2 as micro__services__protobuf_dot_notification__center_dot_apns__pb2
+from micro_services_protobuf.notification_center import event_pb2 as micro__services__protobuf_dot_notification__center_dot_event__pb2
 from micro_services_protobuf.notification_center import wechat_pb2 as micro__services__protobuf_dot_notification__center_dot_wechat__pb2
 
 
@@ -191,5 +192,99 @@ class Wechat(object):
         return grpc.experimental.unary_unary(request, target, '/notification_center.Wechat/HandleWechatServerEvent',
             micro__services__protobuf_dot_notification__center_dot_wechat__pb2.HandleWechatServerEventRequest.SerializeToString,
             micro__services__protobuf_dot_common__pb2.DefaultResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+
+class NotificationStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.UpdateEventSubscribe = channel.unary_unary(
+                '/notification_center.Notification/UpdateEventSubscribe',
+                request_serializer=micro__services__protobuf_dot_notification__center_dot_event__pb2.UpdateEventSubscribeRequest.SerializeToString,
+                response_deserializer=micro__services__protobuf_dot_common__pb2.DefaultResponse.FromString,
+                )
+        self.FetchSubscribeInfo = channel.unary_unary(
+                '/notification_center.Notification/FetchSubscribeInfo',
+                request_serializer=micro__services__protobuf_dot_common__pb2.UserId.SerializeToString,
+                response_deserializer=micro__services__protobuf_dot_notification__center_dot_event__pb2.FetchSubscribeInfoResponse.FromString,
+                )
+
+
+class NotificationServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def UpdateEventSubscribe(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def FetchSubscribeInfo(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_NotificationServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'UpdateEventSubscribe': grpc.unary_unary_rpc_method_handler(
+                    servicer.UpdateEventSubscribe,
+                    request_deserializer=micro__services__protobuf_dot_notification__center_dot_event__pb2.UpdateEventSubscribeRequest.FromString,
+                    response_serializer=micro__services__protobuf_dot_common__pb2.DefaultResponse.SerializeToString,
+            ),
+            'FetchSubscribeInfo': grpc.unary_unary_rpc_method_handler(
+                    servicer.FetchSubscribeInfo,
+                    request_deserializer=micro__services__protobuf_dot_common__pb2.UserId.FromString,
+                    response_serializer=micro__services__protobuf_dot_notification__center_dot_event__pb2.FetchSubscribeInfoResponse.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'notification_center.Notification', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+
+
+ # This class is part of an EXPERIMENTAL API.
+class Notification(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def UpdateEventSubscribe(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/notification_center.Notification/UpdateEventSubscribe',
+            micro__services__protobuf_dot_notification__center_dot_event__pb2.UpdateEventSubscribeRequest.SerializeToString,
+            micro__services__protobuf_dot_common__pb2.DefaultResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def FetchSubscribeInfo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/notification_center.Notification/FetchSubscribeInfo',
+            micro__services__protobuf_dot_common__pb2.UserId.SerializeToString,
+            micro__services__protobuf_dot_notification__center_dot_event__pb2.FetchSubscribeInfoResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n$micro_services_protobuf/common.proto\x12\x06\x63ommon\"\x1e\n\x0f\x44\x65\x66\x61ultResponse\x12\x0b\n\x03msg\x18\x01 \x01(\tb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n$micro_services_protobuf/common.proto\x12\x06\x63ommon\"\x1e\n\x0f\x44\x65\x66\x61ultResponse\x12\x0b\n\x03msg\x18\x01 \x01(\t\"\x15\n\x06UserId\x12\x0b\n\x03uid\x18\x01 \x01(\x0c\x62\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'micro_services_protobuf.common_pb2', globals())
@@ -22,4 +22,6 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
   _DEFAULTRESPONSE._serialized_start=48
   _DEFAULTRESPONSE._serialized_end=78
+  _USERID._serialized_start=80
+  _USERID._serialized_end=101
 # @@protoc_insertion_point(module_scope)

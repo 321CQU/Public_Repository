@@ -8,7 +8,7 @@ message SetUserOpenIdRequest {
     string code = 2;    // 小程序openid请求码
 }
 
-// 处理微信发送通知
+// 处理微信发送通知请求值
 message HandleWechatServerEventRequest {
     string openid = 1;  // 用户openID
     string template_id = 2; // 小程序模版ID

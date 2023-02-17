@@ -6,3 +6,8 @@ package common;
 message DefaultResponse {
     string msg = 1; // 仅为`success`
 }
+
+// 用户身份标识
+message UserId {
+    bytes uid = 1; // 用户身份标识
+}

@@ -4,6 +4,7 @@ package notification_center;
 
 import "micro_services_protobuf/common.proto";
 import "micro_services_protobuf/notification_center/apns.proto";
+import "micro_services_protobuf/notification_center/event.proto";
 import "micro_services_protobuf/notification_center/wechat.proto";
 
 service Apns {
@@ -14,4 +15,9 @@ service Apns {
 service Wechat {
     rpc SetUserOpenId(SetUserOpenIdRequest) returns (common.DefaultResponse);
     rpc HandleWechatServerEvent(HandleWechatServerEventRequest) returns (common.DefaultResponse);
+}
+
+service Notification {
+    rpc UpdateEventSubscribe(UpdateEventSubscribeRequest) returns (common.DefaultResponse);
+    rpc FetchSubscribeInfo(common.UserId) returns (FetchSubscribeInfoResponse);
 }

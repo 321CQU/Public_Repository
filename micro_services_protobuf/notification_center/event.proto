@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package notification_center;
+
+enum NOTIFICATION_EVENT {
+    NOTIFICATION_EVENT_SCORE = 0;
+}
+
+// 更新事件订阅请求值
+message UpdateEventSubscribeRequest {
+    bytes uid = 1;  // 用户身份标识符
+    NOTIFICATION_EVENT event = 2;   // 订阅事件类型
+    bool is_subscribe = 3;  // 是否为订阅，true为订阅，false为取消订阅
+}
+
+// 查询订阅信息响应值
+message FetchSubscribeInfoResponse {
+    repeated NOTIFICATION_EVENT events = 1;  // 已订阅的事件列表
+}
