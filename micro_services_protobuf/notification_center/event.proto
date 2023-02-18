@@ -8,9 +8,16 @@ enum NOTIFICATION_EVENT {
 
 // 更新事件订阅请求值
 message UpdateEventSubscribeRequest {
+    message ExtraData {
+        string auth = 1;    // 用户账号
+        string password = 2;    // 用户密码
+        string extra_data = 3;  // 额外信息，以json字符串形式传输
+    }
+
     bytes uid = 1;  // 用户身份标识符
     NOTIFICATION_EVENT event = 2;   // 订阅事件类型
     bool is_subscribe = 3;  // 是否为订阅，true为订阅，false为取消订阅
+    ExtraData extra_data = 4; // 订阅需要的额外信息
 }
 
 // 查询订阅信息响应值
