@@ -1,3 +1,3 @@
-from .SqlManager import SqlManager
+from .SqlManager import SqlManager, DatabaseConfig
 
-__all__ = ["SqlManager"]
+__all__ = ["SqlManager", "DatabaseConfig"]
