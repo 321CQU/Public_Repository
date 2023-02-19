@@ -6,7 +6,7 @@ package notification_center;
 // 设置用户Apns请求的参数
 message SetUserApnsRequest {
     bytes uid = 1; // 用户身份标识
-    string apn = 2; // 用户apn
+    bytes apn = 2; // 用户apn
 }
 
 // 发送iOS设备通知
@@ -23,6 +23,6 @@ message SendApnsNotificationRequest {
         string category = 3;    // 通知的类型，为空字符串则不发送该字段
     }
 
-    bytes uid = 1; // 用户身份标识
+    bytes apn = 1; // 用户apn
     AppleNotification notification = 2;     // 通知信息设置
 }
