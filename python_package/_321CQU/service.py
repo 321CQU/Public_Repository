@@ -4,6 +4,7 @@ from ._mock import MockApnStub
 from micro_services_protobuf.notification_center import service_pb2_grpc as notification_grpc
 from micro_services_protobuf.mycqu_service import mycqu_service_pb2_grpc as mycqu_grpc
 from micro_services_protobuf.edu_admin_center import eac_service_pb2_grpc as eac_grpc
+from micro_services_protobuf.course_score_query import service_pb2_grpc as csq_grpc
 
 
 class ServiceEnum(str, Enum):
@@ -17,6 +18,8 @@ class ServiceEnum(str, Enum):
     CardService = 'card_service'
 
     EduAdminCenter = 'edu_admin_center'
+
+    CourseScoreQuery = 'course_score_query'
 
     @property
     def service_name(self) -> str:
@@ -34,6 +37,8 @@ class ServiceEnum(str, Enum):
             return 'mycqu_service'
         elif self == ServiceEnum.EduAdminCenter:
             return 'edu_admin_center'
+        elif self == ServiceEnum.CourseScoreQuery:
+            return 'course_score_query'
 
     @property
     def is_http_service(self):
@@ -55,6 +60,8 @@ class ServiceEnum(str, Enum):
             return mycqu_grpc.CardFetcherStub
         elif self == ServiceEnum.EduAdminCenter:
             return eac_grpc.EduAdminCenterStub
+        elif self == ServiceEnum.CourseScoreQuery:
+            return csq_grpc.CourseScoreQueryStub
         else:
             raise RuntimeError("未提供对应服务Stub")
 

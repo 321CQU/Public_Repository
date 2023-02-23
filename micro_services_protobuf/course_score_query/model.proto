@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package course_score_query;
+
+import "micro_services_protobuf/mycqu_service/mycqu_model.proto";
+
+// 通过名称查询课程请求值
+message FindCourseByNameRequest {
+    oneof search_keyword{
+        string course_name = 1; // 课程名称
+        string teacher_name = 2;    // 教师名称
+    }
+}
+
+// 通过名称查询课程返回值
+message FindCourseByNameResponse {
+    repeated mycqu_service.Course courses = 1;  // 课程信息
+}
+
+// 查询某一课程往年成绩请求值
+message FetchLayeredScoreDetailRequest {
+    string course_code = 1; // 课程代码
+}
+
+// 成绩分布信息
+message LayeredScoreDetail {
+    message LayeredTermScoreDetail {
+        mycqu_service.CquSession term = 1;  // 学期
+        bool is_hierarchy = 2;  // 是否为等级制
+        float max = 3; // 最高成绩 (无法获取时为-1)
+        float min = 4; // 最低成绩 (无法获取时为-1)
+        float average = 5; // 平均成绩 (无法获取时为-1)
+        int32 num = 6; // 已知成绩人数
+        int32 level1_num = 7;   // 等级1成绩人数 (90~100 或 优)
+        int32 level2_num = 8;   // 等级2成绩人数 (80~90 或 良)
+        int32 level3_num = 9;   // 等级3成绩人数 (70~80 或 中)
+        int32 level4_num = 10;   // 等级4成绩人数 (60~70 或 及格)
+        int32 level5_num = 11;   // 等级5成绩人数 (0~60 或 不及格)
+    }
+    string teacher_name = 1;    // 教师名称
+    repeated LayeredTermScoreDetail details = 2;    // 每学期成绩
+}
+
+// 查询某一课程往年成绩返回值
+message FetchLayeredScoreDetailResponse {
+    string course_name = 1; // 课程名称
+    string course_code = 2; // 课程代码
+    repeated LayeredScoreDetail score_details = 3;  // 成绩分布信息
+}
