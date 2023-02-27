@@ -24,11 +24,11 @@ class Bill(BaseModel):
     """
     某次消费账单信息
     """
-    tran_name: str = Field(title="交易名称")
+    name: str = Field(title="交易名称")
     """交易名称"""
-    tran_date: datetime = Field(title="交易时间")
+    date: datetime = Field(title="交易时间")
     """交易时间"""
-    tran_place: str = Field(title="交易地点")
+    place: str = Field(title="交易地点")
     """交易地点"""
     tran_amount: float = Field(title="交易金额")
     """交易金额"""
