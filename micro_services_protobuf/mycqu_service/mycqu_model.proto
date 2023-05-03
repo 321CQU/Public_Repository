@@ -178,3 +178,19 @@ message GpaRanking {
     optional uint32 grade_ranking = 6;  // 年级排名
     optional uint32 class_ranking = 7;  // 班级排名
 }
+
+// library 模块
+
+// 图书馆书籍相关信息
+message BookInfo {
+    optional uint64 id = 1;  // 书籍id
+    string title = 2;   // 书籍名称
+    string call_no = 3; // 书籍检索号
+    string library_name = 4;    // 所属图书馆（如虎溪图书馆自然科学阅览室等）
+    uint32 borrow_time = 5; // 借出时间
+    optional string should_return_time = 6; // 应归还日期
+    bool is_return = 7; // 是否被归还
+    optional string return_time = 8;    // 归还时间
+    uint32 renew_count = 9; // 续借次数
+    bool can_renew = 10;   // 是否可被续借
+}

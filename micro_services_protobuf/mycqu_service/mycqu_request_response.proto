@@ -107,3 +107,27 @@ message FetchScoreRequest {
 message FetchScoreResponse {
     repeated Score scores = 1;  // 多个成绩信息
 }
+
+// Library 模块
+
+// 查询书籍借阅信息请求值
+message FetchBorrowBookRequest {
+    BaseLoginInfo info = 1; // 基础登陆信息
+    bool is_curr = 2;   // 是否为当前借阅信息
+}
+
+// 查询书籍借阅信息回传值
+message FetchBorrowBookResponse {
+    repeated BookInfo book_infos = 1;   // 多个借阅信息
+}
+
+// 续借书籍请求值
+message RenewBookRequest {
+    BaseLoginInfo info = 1; // 基础登陆信息
+    string book_id = 2; // 书籍ID
+}
+
+// 续借书籍回传值
+message RenewBookResponse {
+    string message = 1; // 网站回传信息，success为成功
+}

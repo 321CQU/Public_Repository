@@ -16,6 +16,7 @@ class ServiceEnum(str, Enum):
 
     MycquService = 'mycqu_service'
     CardService = 'card_service'
+    LibraryService = 'library_service'
 
     EduAdminCenter = 'edu_admin_center'
 
@@ -34,6 +35,8 @@ class ServiceEnum(str, Enum):
         elif self == ServiceEnum.MycquService:
             return 'mycqu_service'
         elif self == ServiceEnum.CardService:
+            return 'mycqu_service'
+        elif self == ServiceEnum.LibraryService:
             return 'mycqu_service'
         elif self == ServiceEnum.EduAdminCenter:
             return 'edu_admin_center'
@@ -58,6 +61,8 @@ class ServiceEnum(str, Enum):
             return mycqu_grpc.MycquFetcherStub
         elif self == ServiceEnum.CardService:
             return mycqu_grpc.CardFetcherStub
+        elif self == ServiceEnum.LibraryService:
+            return mycqu_grpc.LibraryFetcherStub
         elif self == ServiceEnum.EduAdminCenter:
             return eac_grpc.EduAdminCenterStub
         elif self == ServiceEnum.CourseScoreQuery:

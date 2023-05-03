@@ -536,3 +536,99 @@ class CardFetcher(object):
             micro__services__protobuf_dot_mycqu__service_dot_mycqu__model__pb2.EnergyFees.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+
+class LibraryFetcherStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.FetchBorrowBook = channel.unary_unary(
+                '/mycqu_service.LibraryFetcher/FetchBorrowBook',
+                request_serializer=micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.FetchBorrowBookRequest.SerializeToString,
+                response_deserializer=micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.FetchBorrowBookResponse.FromString,
+                )
+        self.RenewBook = channel.unary_unary(
+                '/mycqu_service.LibraryFetcher/RenewBook',
+                request_serializer=micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.RenewBookRequest.SerializeToString,
+                response_deserializer=micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.RenewBookResponse.FromString,
+                )
+
+
+class LibraryFetcherServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def FetchBorrowBook(self, request, context):
+        """获取书籍借阅信息
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def RenewBook(self, request, context):
+        """续借书籍
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_LibraryFetcherServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'FetchBorrowBook': grpc.unary_unary_rpc_method_handler(
+                    servicer.FetchBorrowBook,
+                    request_deserializer=micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.FetchBorrowBookRequest.FromString,
+                    response_serializer=micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.FetchBorrowBookResponse.SerializeToString,
+            ),
+            'RenewBook': grpc.unary_unary_rpc_method_handler(
+                    servicer.RenewBook,
+                    request_deserializer=micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.RenewBookRequest.FromString,
+                    response_serializer=micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.RenewBookResponse.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'mycqu_service.LibraryFetcher', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+
+
+ # This class is part of an EXPERIMENTAL API.
+class LibraryFetcher(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def FetchBorrowBook(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/mycqu_service.LibraryFetcher/FetchBorrowBook',
+            micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.FetchBorrowBookRequest.SerializeToString,
+            micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.FetchBorrowBookResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def RenewBook(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/mycqu_service.LibraryFetcher/RenewBook',
+            micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.RenewBookRequest.SerializeToString,
+            micro__services__protobuf_dot_mycqu__service_dot_mycqu__request__response__pb2.RenewBookResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

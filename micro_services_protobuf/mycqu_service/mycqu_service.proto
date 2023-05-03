@@ -28,3 +28,8 @@ service CardFetcher {
     rpc FetchBills(BaseLoginInfo) returns (FetchBillResponse);  // 获取最近30天账单信息
     rpc FetchEnergyFee(FetchEnergyFeeRequest) returns (EnergyFees); // 获取水电费信息
 }
+
+service LibraryFetcher {
+    rpc FetchBorrowBook(FetchBorrowBookRequest) returns (FetchBorrowBookResponse);    // 获取书籍借阅信息
+    rpc RenewBook(RenewBookRequest) returns (RenewBookResponse);    // 续借书籍
+}

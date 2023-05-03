@@ -19,6 +19,30 @@ class Bill(_message.Message):
     tran_amount: float
     def __init__(self, name: _Optional[str] = ..., date: _Optional[int] = ..., place: _Optional[str] = ..., tran_amount: _Optional[float] = ..., acc_amount: _Optional[float] = ...) -> None: ...
 
+class BookInfo(_message.Message):
+    __slots__ = ["borrow_time", "call_no", "can_renew", "id", "is_return", "library_name", "renew_count", "return_time", "should_return_time", "title"]
+    BORROW_TIME_FIELD_NUMBER: _ClassVar[int]
+    CALL_NO_FIELD_NUMBER: _ClassVar[int]
+    CAN_RENEW_FIELD_NUMBER: _ClassVar[int]
+    ID_FIELD_NUMBER: _ClassVar[int]
+    IS_RETURN_FIELD_NUMBER: _ClassVar[int]
+    LIBRARY_NAME_FIELD_NUMBER: _ClassVar[int]
+    RENEW_COUNT_FIELD_NUMBER: _ClassVar[int]
+    RETURN_TIME_FIELD_NUMBER: _ClassVar[int]
+    SHOULD_RETURN_TIME_FIELD_NUMBER: _ClassVar[int]
+    TITLE_FIELD_NUMBER: _ClassVar[int]
+    borrow_time: int
+    call_no: str
+    can_renew: bool
+    id: int
+    is_return: bool
+    library_name: str
+    renew_count: int
+    return_time: str
+    should_return_time: str
+    title: str
+    def __init__(self, id: _Optional[int] = ..., title: _Optional[str] = ..., call_no: _Optional[str] = ..., library_name: _Optional[str] = ..., borrow_time: _Optional[int] = ..., should_return_time: _Optional[str] = ..., is_return: bool = ..., return_time: _Optional[str] = ..., renew_count: _Optional[int] = ..., can_renew: bool = ...) -> None: ...
+
 class Card(_message.Message):
     __slots__ = ["amount", "id"]
     AMOUNT_FIELD_NUMBER: _ClassVar[int]

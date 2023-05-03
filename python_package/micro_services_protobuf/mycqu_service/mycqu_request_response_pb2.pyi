@@ -32,6 +32,20 @@ class FetchBillResponse(_message.Message):
     bills: _containers.RepeatedCompositeFieldContainer[_mycqu_model_pb2.Bill]
     def __init__(self, bills: _Optional[_Iterable[_Union[_mycqu_model_pb2.Bill, _Mapping]]] = ...) -> None: ...
 
+class FetchBorrowBookRequest(_message.Message):
+    __slots__ = ["info", "is_curr"]
+    INFO_FIELD_NUMBER: _ClassVar[int]
+    IS_CURR_FIELD_NUMBER: _ClassVar[int]
+    info: BaseLoginInfo
+    is_curr: bool
+    def __init__(self, info: _Optional[_Union[BaseLoginInfo, _Mapping]] = ..., is_curr: bool = ...) -> None: ...
+
+class FetchBorrowBookResponse(_message.Message):
+    __slots__ = ["book_infos"]
+    BOOK_INFOS_FIELD_NUMBER: _ClassVar[int]
+    book_infos: _containers.RepeatedCompositeFieldContainer[_mycqu_model_pb2.BookInfo]
+    def __init__(self, book_infos: _Optional[_Iterable[_Union[_mycqu_model_pb2.BookInfo, _Mapping]]] = ...) -> None: ...
+
 class FetchCourseTimetableRequest(_message.Message):
     __slots__ = ["base_login_info", "code", "session"]
     BASE_LOGIN_INFO_FIELD_NUMBER: _ClassVar[int]
@@ -135,3 +149,17 @@ class FetchScoreResponse(_message.Message):
     SCORES_FIELD_NUMBER: _ClassVar[int]
     scores: _containers.RepeatedCompositeFieldContainer[_mycqu_model_pb2.Score]
     def __init__(self, scores: _Optional[_Iterable[_Union[_mycqu_model_pb2.Score, _Mapping]]] = ...) -> None: ...
+
+class RenewBookRequest(_message.Message):
+    __slots__ = ["book_id", "info"]
+    BOOK_ID_FIELD_NUMBER: _ClassVar[int]
+    INFO_FIELD_NUMBER: _ClassVar[int]
+    book_id: str
+    info: BaseLoginInfo
+    def __init__(self, info: _Optional[_Union[BaseLoginInfo, _Mapping]] = ..., book_id: _Optional[str] = ...) -> None: ...
+
+class RenewBookResponse(_message.Message):
+    __slots__ = ["message"]
+    MESSAGE_FIELD_NUMBER: _ClassVar[int]
+    message: str
+    def __init__(self, message: _Optional[str] = ...) -> None: ...
