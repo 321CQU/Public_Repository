@@ -18,14 +18,16 @@ class FetchCourseTimetableRequest(_message.Message):
     def __init__(self, login_info: _Optional[_Union[_mycqu_request_response_pb2.BaseLoginInfo, _Mapping]] = ..., code: _Optional[str] = ..., offset: _Optional[int] = ...) -> None: ...
 
 class FetchCourseTimetableResponse(_message.Message):
-    __slots__ = ["course_timetables", "end_date", "start_date"]
+    __slots__ = ["course_timetables", "end_date", "session_name", "start_date"]
     COURSE_TIMETABLES_FIELD_NUMBER: _ClassVar[int]
     END_DATE_FIELD_NUMBER: _ClassVar[int]
+    SESSION_NAME_FIELD_NUMBER: _ClassVar[int]
     START_DATE_FIELD_NUMBER: _ClassVar[int]
     course_timetables: _containers.RepeatedCompositeFieldContainer[_mycqu_model_pb2.CourseTimetable]
     end_date: str
+    session_name: str
     start_date: str
-    def __init__(self, course_timetables: _Optional[_Iterable[_Union[_mycqu_model_pb2.CourseTimetable, _Mapping]]] = ..., start_date: _Optional[str] = ..., end_date: _Optional[str] = ...) -> None: ...
+    def __init__(self, course_timetables: _Optional[_Iterable[_Union[_mycqu_model_pb2.CourseTimetable, _Mapping]]] = ..., start_date: _Optional[str] = ..., end_date: _Optional[str] = ..., session_name: _Optional[str] = ...) -> None: ...
 
 class FetchScoreRequest(_message.Message):
     __slots__ = ["base_login_info", "is_minor", "sid"]

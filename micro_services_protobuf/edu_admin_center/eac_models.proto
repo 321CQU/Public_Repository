@@ -25,6 +25,7 @@ message FetchCourseTimetableResponse {
     repeated mycqu_service.CourseTimetable course_timetables = 1; // 多个课表信息
     string start_date = 2;  // 学期起始日期，"yyyy-mm-dd"格式
     string end_date = 3;    // 学期结束日期，"yyyy-mm-dd"格式
+    string session_name = 4;    // 学期名称，如“2022秋”
 }
 
 // 获取成绩请求
