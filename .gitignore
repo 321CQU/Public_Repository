@@ -199,3 +199,4 @@ cython_debug/
 /launchProtobuf
 config.cfg
 test.py
+/micro_services_protobuf/target

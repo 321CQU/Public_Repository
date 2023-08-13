@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package course_score_query;
 
-import "micro_services_protobuf/mycqu_service/mycqu_model.proto";
+import "mycqu_service/mycqu_model.proto";
 
 // 通过名称查询课程请求值
 message FindCourseByNameRequest {
