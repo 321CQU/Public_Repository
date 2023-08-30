@@ -157,7 +157,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+#.env
 .venv
 env/
 venv/
@@ -199,4 +199,3 @@ cython_debug/
 /launchProtobuf
 config.cfg
 test.py
-/micro_services_protobuf/target

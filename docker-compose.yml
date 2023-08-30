@@ -1,0 +1,17 @@
+version: '3'
+services:
+  control-center:
+    container_name: 321cqu-control-center
+    image: ${CONTROL_CENTER_IMAGE}
+    expose:
+      - ${CONTROL_CENTER_EXPOSE_PORT}
+    restart: always
+    volumes:
+      - ${CONTROL_CENTER_HOME_DIR}/config:/etc/ControlCenter:ro
+    networks:
+      - persist
+
+networks:
+  persist:
+    external:
+      name: 321cqu

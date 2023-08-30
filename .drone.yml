@@ -17,23 +17,29 @@ clone:
   disable: true
 
 steps:
-- name: clone
-  commands:
-    - git config --global http.proxy http://127.0.0.1:7890
-    - git config --global https.proxy http://127.0.0.1:7890
-    - git clone https://github.com/ZhuLegend/321CQU_Public_Repository.git
-    - cd ./321CQU_Public_Repository
-    - git checkout main
-    - cp -a -r -f ./micro_services_protobuf/ /www/services/_321CQU_package/micro_services_protobuf/
-    - cp -a -r -f ./python_package/_321CQU/ /www/services/_321CQU_package/python_package/
-    - cp -a -r -f ./python_package/micro_services_protobuf/ /www/services/_321CQU_package/python_package/
+  - name: clone
+    environment:
+      ENV_FILE_PATH: ./.env
+    commands:
+      - git config --global http.proxy http://127.0.0.1:7890
+      - git config --global https.proxy http://127.0.0.1:7890
+      - git clone https://github.com/321CQU/Public_Repository.git
+      - cd ./Public_Repository
+      - git checkout main
+      - source $ENV_FILE_PATH
+      - cp -a -r -f ./micro_services_protobuf/ $${_321CQU_PUBLIC_REPOSITORY_PATH}/micro_services_protobuf/
+      - cp -a -r -f ./python_package/_321CQU/ $${_321CQU_PUBLIC_REPOSITORY_PATH}/python_package/
+      - cp -a -r -f ./python_package/micro_services_protobuf/ $${_321CQU_PUBLIC_REPOSITORY_PATH}/python_package/
+      - cp -a -r -f ./proto_build/python/micro_services_protobuf $${_321CQU_PUBLIC_REPOSITORY_PATH}/python_package/
+      - cp -a -r -f ./docker-compose.yml $${_321CQU_PUBLIC_REPOSITORY_PATH}/
+      - cp -a -r -f $ENV_FILE_PATH $${_321CQU_PUBLIC_REPOSITORY_PATH}/
 
 trigger:
   branch:
-  - main
+    - main
   event:
-  - push
-  - merge
+    - push
+    - merge
 
 ---
 kind: pipeline
@@ -55,6 +61,11 @@ steps:
       message_color: true
       message_pic: true
       sha_link: true
+
+trigger:
+  status:
+    - success
+    - failure
 
 depends_on:
   - 同步321CQU公共仓库
