@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package edu_admin_center;
 
-import "mycqu_service/mycqu_model.proto";
-import "mycqu_service/mycqu_request_response.proto";
+import "micro_services_protobuf/mycqu_service/mycqu_model.proto";
+import "micro_services_protobuf/mycqu_service/mycqu_request_response.proto";
 
 // 验证账号正确性返回值
 message ValidateAuthResponse {

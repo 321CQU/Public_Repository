@@ -1,0 +1,6 @@
+from micro_services_protobuf.mycqu_service import mycqu_model_pb2 as _mycqu_model_pb2
+from micro_services_protobuf.mycqu_service import mycqu_request_response_pb2 as _mycqu_request_response_pb2
+from google.protobuf import descriptor as _descriptor
+from typing import ClassVar as _ClassVar
+
+DESCRIPTOR: _descriptor.FileDescriptor

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package course_score_query;
 
-import "course_score_query/model.proto";
+import "micro_services_protobuf/course_score_query/model.proto";
 
 service CourseScoreQuery {
     rpc FindCourseByName(FindCourseByNameRequest) returns (FindCourseByNameResponse);

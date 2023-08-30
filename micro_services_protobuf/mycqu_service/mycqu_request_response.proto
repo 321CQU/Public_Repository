@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package mycqu_service;
 
-import "mycqu_service/mycqu_model.proto";
+import "micro_services_protobuf/mycqu_service/mycqu_model.proto";
 
 // 基础登陆信息
 message BaseLoginInfo {

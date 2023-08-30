@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package control_center;
+
+import "micro_services_protobuf/control_center/control_center_models.proto";
+import "google/protobuf/empty.proto";
+
+service ImportantInfoService {
+    rpc ForceRefreshHomepageInfoCache(google.protobuf.Empty) returns (HomepageResponse);    // 强制刷新首页信息缓存
+    rpc GetHomepageInfos(google.protobuf.Empty) returns (HomepageResponse); // 获取首页信息
+}

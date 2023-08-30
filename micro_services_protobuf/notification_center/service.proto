@@ -2,10 +2,10 @@ syntax = "proto3";
 
 package notification_center;
 
-import "common.proto";
-import "notification_center/apns.proto";
-import "notification_center/event.proto";
-import "notification_center/wechat.proto";
+import "micro_services_protobuf/common.proto";
+import "micro_services_protobuf/notification_center/apns.proto";
+import "micro_services_protobuf/notification_center/event.proto";
+import "micro_services_protobuf/notification_center/wechat.proto";
 
 service Apns {
     rpc SetUserApns(SetUserApnsRequest) returns (common.DefaultResponse);

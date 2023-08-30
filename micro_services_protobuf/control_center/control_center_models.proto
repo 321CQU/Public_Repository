@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package control_center;
+
+// 首页轮播图
+message HomepageResponse {
+    enum ImgPos{
+        LOCAL = 0;
+        COS = 1;
+    }
+
+    enum JumpType {
+        NONE = 0;   // 不跳转
+        MD = 1;     // 跳转markdown页面
+        URL = 2;    // 跳转url
+    }
+
+    message HomepageInfo {
+        string img_url = 1;  // 封面图片标识符（无路径前缀），如：/img/xxx.jpg
+        ImgPos img_pos = 2;  // 封面图片位置
+        JumpType jump_type = 3; // 点击后跳转类型
+        string jump_param = 4;  // 点击后跳转参数，根据不同跳转类型自行约定
+    }
+
+    repeated HomepageInfo homepages = 1;    // 封面图片信息列表，请按照回传顺序显示
+    uint32 last_update_time = 2;    // 上次更新的时间，秒级时间戳
+}
