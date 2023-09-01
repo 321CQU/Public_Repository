@@ -11,6 +11,21 @@ services:
     networks:
       - persist
 
+  api-gateway:
+    container_name: 321cqu-api-gateway
+    image: ${API_GATEWAY_IMAGE}
+    ports:
+      - "8000:8000"
+    restart: always
+    volumes:
+      - ${API_GATEWAY_HOME_DIR}/logs:/src/logs
+      - ${API_GATEWAY_HOME_DIR}/config.cfg:/src/utils/config.cfg
+      - ${_321CQU_PUBLIC_REPOSITORY_PATH}/python_package:/_321CQU_package
+    environment:
+      PYTHONPATH: /_321CQU_package
+    networks:
+      - persist
+
 networks:
   persist:
     external:
