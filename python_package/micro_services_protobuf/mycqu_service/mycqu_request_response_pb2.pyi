@@ -14,11 +14,21 @@ class BaseLoginInfo(_message.Message):
     password: str
     def __init__(self, auth: _Optional[str] = ..., password: _Optional[str] = ...) -> None: ...
 
-class FetchAllSessionInfoResponse(_message.Message):
-    __slots__ = ["session_infos"]
-    SESSION_INFOS_FIELD_NUMBER: _ClassVar[int]
-    session_infos: _containers.RepeatedCompositeFieldContainer[_mycqu_model_pb2.CquSessionInfo]
-    def __init__(self, session_infos: _Optional[_Iterable[_Union[_mycqu_model_pb2.CquSessionInfo, _Mapping]]] = ...) -> None: ...
+class FetchBillResponse(_message.Message):
+    __slots__ = ["bills"]
+    BILLS_FIELD_NUMBER: _ClassVar[int]
+    bills: _containers.RepeatedCompositeFieldContainer[_mycqu_model_pb2.Bill]
+    def __init__(self, bills: _Optional[_Iterable[_Union[_mycqu_model_pb2.Bill, _Mapping]]] = ...) -> None: ...
+
+class FetchEnergyFeeRequest(_message.Message):
+    __slots__ = ["base_login_info", "is_hu_xi", "room"]
+    BASE_LOGIN_INFO_FIELD_NUMBER: _ClassVar[int]
+    IS_HU_XI_FIELD_NUMBER: _ClassVar[int]
+    ROOM_FIELD_NUMBER: _ClassVar[int]
+    base_login_info: BaseLoginInfo
+    is_hu_xi: bool
+    room: str
+    def __init__(self, base_login_info: _Optional[_Union[BaseLoginInfo, _Mapping]] = ..., is_hu_xi: bool = ..., room: _Optional[str] = ...) -> None: ...
 
 class FetchAllSessionResponse(_message.Message):
     __slots__ = ["sessions"]
@@ -26,25 +36,11 @@ class FetchAllSessionResponse(_message.Message):
     sessions: _containers.RepeatedCompositeFieldContainer[_mycqu_model_pb2.CquSession]
     def __init__(self, sessions: _Optional[_Iterable[_Union[_mycqu_model_pb2.CquSession, _Mapping]]] = ...) -> None: ...
 
-class FetchBillResponse(_message.Message):
-    __slots__ = ["bills"]
-    BILLS_FIELD_NUMBER: _ClassVar[int]
-    bills: _containers.RepeatedCompositeFieldContainer[_mycqu_model_pb2.Bill]
-    def __init__(self, bills: _Optional[_Iterable[_Union[_mycqu_model_pb2.Bill, _Mapping]]] = ...) -> None: ...
-
-class FetchBorrowBookRequest(_message.Message):
-    __slots__ = ["info", "is_curr"]
-    INFO_FIELD_NUMBER: _ClassVar[int]
-    IS_CURR_FIELD_NUMBER: _ClassVar[int]
-    info: BaseLoginInfo
-    is_curr: bool
-    def __init__(self, info: _Optional[_Union[BaseLoginInfo, _Mapping]] = ..., is_curr: bool = ...) -> None: ...
-
-class FetchBorrowBookResponse(_message.Message):
-    __slots__ = ["book_infos"]
-    BOOK_INFOS_FIELD_NUMBER: _ClassVar[int]
-    book_infos: _containers.RepeatedCompositeFieldContainer[_mycqu_model_pb2.BookInfo]
-    def __init__(self, book_infos: _Optional[_Iterable[_Union[_mycqu_model_pb2.BookInfo, _Mapping]]] = ...) -> None: ...
+class FetchAllSessionInfoResponse(_message.Message):
+    __slots__ = ["session_infos"]
+    SESSION_INFOS_FIELD_NUMBER: _ClassVar[int]
+    session_infos: _containers.RepeatedCompositeFieldContainer[_mycqu_model_pb2.CquSessionInfo]
+    def __init__(self, session_infos: _Optional[_Iterable[_Union[_mycqu_model_pb2.CquSessionInfo, _Mapping]]] = ...) -> None: ...
 
 class FetchCourseTimetableRequest(_message.Message):
     __slots__ = ["base_login_info", "code", "session"]
@@ -62,15 +58,13 @@ class FetchCourseTimetableResponse(_message.Message):
     course_timetables: _containers.RepeatedCompositeFieldContainer[_mycqu_model_pb2.CourseTimetable]
     def __init__(self, course_timetables: _Optional[_Iterable[_Union[_mycqu_model_pb2.CourseTimetable, _Mapping]]] = ...) -> None: ...
 
-class FetchEnergyFeeRequest(_message.Message):
-    __slots__ = ["base_login_info", "is_hu_xi", "room"]
+class FetchEnrollTimetableRequest(_message.Message):
+    __slots__ = ["base_login_info", "code"]
     BASE_LOGIN_INFO_FIELD_NUMBER: _ClassVar[int]
-    IS_HU_XI_FIELD_NUMBER: _ClassVar[int]
-    ROOM_FIELD_NUMBER: _ClassVar[int]
+    CODE_FIELD_NUMBER: _ClassVar[int]
     base_login_info: BaseLoginInfo
-    is_hu_xi: bool
-    room: str
-    def __init__(self, base_login_info: _Optional[_Union[BaseLoginInfo, _Mapping]] = ..., is_hu_xi: bool = ..., room: _Optional[str] = ...) -> None: ...
+    code: str
+    def __init__(self, base_login_info: _Optional[_Union[BaseLoginInfo, _Mapping]] = ..., code: _Optional[str] = ...) -> None: ...
 
 class FetchEnrollCourseInfoRequest(_message.Message):
     __slots__ = ["base_login_info", "is_major"]
@@ -114,14 +108,6 @@ class FetchEnrollCourseItemResponse(_message.Message):
     enroll_course_items: _containers.RepeatedCompositeFieldContainer[_mycqu_model_pb2.EnrollCourseItem]
     def __init__(self, enroll_course_items: _Optional[_Iterable[_Union[_mycqu_model_pb2.EnrollCourseItem, _Mapping]]] = ...) -> None: ...
 
-class FetchEnrollTimetableRequest(_message.Message):
-    __slots__ = ["base_login_info", "code"]
-    BASE_LOGIN_INFO_FIELD_NUMBER: _ClassVar[int]
-    CODE_FIELD_NUMBER: _ClassVar[int]
-    base_login_info: BaseLoginInfo
-    code: str
-    def __init__(self, base_login_info: _Optional[_Union[BaseLoginInfo, _Mapping]] = ..., code: _Optional[str] = ...) -> None: ...
-
 class FetchExamRequest(_message.Message):
     __slots__ = ["base_login_info", "stu_id"]
     BASE_LOGIN_INFO_FIELD_NUMBER: _ClassVar[int]
@@ -150,12 +136,26 @@ class FetchScoreResponse(_message.Message):
     scores: _containers.RepeatedCompositeFieldContainer[_mycqu_model_pb2.Score]
     def __init__(self, scores: _Optional[_Iterable[_Union[_mycqu_model_pb2.Score, _Mapping]]] = ...) -> None: ...
 
-class RenewBookRequest(_message.Message):
-    __slots__ = ["book_id", "info"]
-    BOOK_ID_FIELD_NUMBER: _ClassVar[int]
+class FetchBorrowBookRequest(_message.Message):
+    __slots__ = ["info", "is_curr"]
     INFO_FIELD_NUMBER: _ClassVar[int]
-    book_id: str
+    IS_CURR_FIELD_NUMBER: _ClassVar[int]
     info: BaseLoginInfo
+    is_curr: bool
+    def __init__(self, info: _Optional[_Union[BaseLoginInfo, _Mapping]] = ..., is_curr: bool = ...) -> None: ...
+
+class FetchBorrowBookResponse(_message.Message):
+    __slots__ = ["book_infos"]
+    BOOK_INFOS_FIELD_NUMBER: _ClassVar[int]
+    book_infos: _containers.RepeatedCompositeFieldContainer[_mycqu_model_pb2.BookInfo]
+    def __init__(self, book_infos: _Optional[_Iterable[_Union[_mycqu_model_pb2.BookInfo, _Mapping]]] = ...) -> None: ...
+
+class RenewBookRequest(_message.Message):
+    __slots__ = ["info", "book_id"]
+    INFO_FIELD_NUMBER: _ClassVar[int]
+    BOOK_ID_FIELD_NUMBER: _ClassVar[int]
+    info: BaseLoginInfo
+    book_id: str
     def __init__(self, info: _Optional[_Union[BaseLoginInfo, _Mapping]] = ..., book_id: _Optional[str] = ...) -> None: ...
 
 class RenewBookResponse(_message.Message):

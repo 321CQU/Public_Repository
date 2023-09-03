@@ -4,20 +4,20 @@ from typing import ClassVar as _ClassVar, Optional as _Optional
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
+class SetUserOpenIdRequest(_message.Message):
+    __slots__ = ["uid", "code"]
+    UID_FIELD_NUMBER: _ClassVar[int]
+    CODE_FIELD_NUMBER: _ClassVar[int]
+    uid: bytes
+    code: str
+    def __init__(self, uid: _Optional[bytes] = ..., code: _Optional[str] = ...) -> None: ...
+
 class HandleWechatServerEventRequest(_message.Message):
-    __slots__ = ["is_accept", "openid", "template_id"]
-    IS_ACCEPT_FIELD_NUMBER: _ClassVar[int]
+    __slots__ = ["openid", "template_id", "is_accept"]
     OPENID_FIELD_NUMBER: _ClassVar[int]
     TEMPLATE_ID_FIELD_NUMBER: _ClassVar[int]
-    is_accept: bool
+    IS_ACCEPT_FIELD_NUMBER: _ClassVar[int]
     openid: str
     template_id: str
+    is_accept: bool
     def __init__(self, openid: _Optional[str] = ..., template_id: _Optional[str] = ..., is_accept: bool = ...) -> None: ...
-
-class SetUserOpenIdRequest(_message.Message):
-    __slots__ = ["code", "uid"]
-    CODE_FIELD_NUMBER: _ClassVar[int]
-    UID_FIELD_NUMBER: _ClassVar[int]
-    code: str
-    uid: bytes
-    def __init__(self, uid: _Optional[bytes] = ..., code: _Optional[str] = ...) -> None: ...

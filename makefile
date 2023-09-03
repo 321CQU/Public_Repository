@@ -1,5 +1,5 @@
 BASE_DIR = ./micro_services_protobuf
-LAUNCH_PYTHON_DIR = course_score_query edu_admin_center mycqu_service notification_center
+LAUNCH_PYTHON_DIR = course_score_query edu_admin_center mycqu_service notification_center control_center
 LAUNCH_SWIFT_DIR = control_center cos_manager
 
 ADDITIONAL_FILE = common.proto
