@@ -4,18 +4,26 @@ from typing import ClassVar as _ClassVar, Mapping as _Mapping, Optional as _Opti
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
+class SetUserApnsRequest(_message.Message):
+    __slots__ = ["uid", "apn"]
+    UID_FIELD_NUMBER: _ClassVar[int]
+    APN_FIELD_NUMBER: _ClassVar[int]
+    uid: bytes
+    apn: bytes
+    def __init__(self, uid: _Optional[bytes] = ..., apn: _Optional[bytes] = ...) -> None: ...
+
 class SendApnsNotificationRequest(_message.Message):
     __slots__ = ["apn", "notification"]
     class AppleNotification(_message.Message):
         __slots__ = ["alert", "badge", "category"]
         class AppleAlert(_message.Message):
-            __slots__ = ["body", "subtitle", "title"]
-            BODY_FIELD_NUMBER: _ClassVar[int]
-            SUBTITLE_FIELD_NUMBER: _ClassVar[int]
+            __slots__ = ["title", "subtitle", "body"]
             TITLE_FIELD_NUMBER: _ClassVar[int]
-            body: str
-            subtitle: str
+            SUBTITLE_FIELD_NUMBER: _ClassVar[int]
+            BODY_FIELD_NUMBER: _ClassVar[int]
             title: str
+            subtitle: str
+            body: str
             def __init__(self, title: _Optional[str] = ..., subtitle: _Optional[str] = ..., body: _Optional[str] = ...) -> None: ...
         ALERT_FIELD_NUMBER: _ClassVar[int]
         BADGE_FIELD_NUMBER: _ClassVar[int]
@@ -29,11 +37,3 @@ class SendApnsNotificationRequest(_message.Message):
     apn: bytes
     notification: SendApnsNotificationRequest.AppleNotification
     def __init__(self, apn: _Optional[bytes] = ..., notification: _Optional[_Union[SendApnsNotificationRequest.AppleNotification, _Mapping]] = ...) -> None: ...
-
-class SetUserApnsRequest(_message.Message):
-    __slots__ = ["apn", "uid"]
-    APN_FIELD_NUMBER: _ClassVar[int]
-    UID_FIELD_NUMBER: _ClassVar[int]
-    apn: bytes
-    uid: bytes
-    def __init__(self, uid: _Optional[bytes] = ..., apn: _Optional[bytes] = ...) -> None: ...

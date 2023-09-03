@@ -4,18 +4,18 @@ package control_center;
 
 // 首页轮播图
 message HomepageResponse {
-    enum ImgPos{
-        LOCAL = 0;
-        COS = 1;
-    }
-
-    enum JumpType {
-        NONE = 0;   // 不跳转
-        MD = 1;     // 跳转markdown页面
-        URL = 2;    // 跳转url
-    }
-
     message HomepageInfo {
+        enum ImgPos{
+            LOCAL = 0;
+            COS = 1;
+        }
+    
+        enum JumpType {
+            NONE = 0;   // 不跳转
+            MD = 1;     // 跳转markdown页面
+            URL = 2;    // 跳转url
+        }
+
         string img_url = 1;  // 封面图片标识符（无路径前缀），如：/img/xxx.jpg
         ImgPos img_pos = 2;  // 封面图片位置
         JumpType jump_type = 3; // 点击后跳转类型
