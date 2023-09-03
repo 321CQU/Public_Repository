@@ -5,6 +5,7 @@ from micro_services_protobuf.notification_center import service_pb2_grpc as noti
 from micro_services_protobuf.mycqu_service import mycqu_service_pb2_grpc as mycqu_grpc
 from micro_services_protobuf.edu_admin_center import eac_service_pb2_grpc as eac_grpc
 from micro_services_protobuf.course_score_query import service_pb2_grpc as csq_grpc
+from micro_services_protobuf.control_center import control_center_service_pb2_grpc as cc_grpc
 
 
 class ServiceEnum(str, Enum):
@@ -13,6 +14,7 @@ class ServiceEnum(str, Enum):
     ApnsService = 'apns_service'
     WechatService = 'wechat_service'
     NotificationService = 'notification_service'
+    ImportantInfoService = 'important_info_service'
 
     MycquService = 'mycqu_service'
     CardService = 'card_service'
@@ -32,12 +34,14 @@ class ServiceEnum(str, Enum):
             return 'notification_center'
         elif self == ServiceEnum.NotificationService:
             return 'notification_center'
+        elif self == ServiceEnum.ImportantInfoService:
+            return 'important_info'
         elif self == ServiceEnum.MycquService:
-            return 'mycqu_service'
+            return 'mycqu'
         elif self == ServiceEnum.CardService:
-            return 'mycqu_service'
+            return 'mycqu'
         elif self == ServiceEnum.LibraryService:
-            return 'mycqu_service'
+            return 'mycqu'
         elif self == ServiceEnum.EduAdminCenter:
             return 'edu_admin_center'
         elif self == ServiceEnum.CourseScoreQuery:
@@ -57,6 +61,8 @@ class ServiceEnum(str, Enum):
             return notification_grpc.WechatStub
         elif self == ServiceEnum.NotificationService:
             return notification_grpc.NotificationStub
+        elif self == ServiceEnum.ImportantInfoService:
+            return cc_grpc.ImportantInfoServiceStub
         elif self == ServiceEnum.MycquService:
             return mycqu_grpc.MycquFetcherStub
         elif self == ServiceEnum.CardService:
