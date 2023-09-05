@@ -1,8 +1,7 @@
 from datetime import datetime
 from typing import Optional
 
-from pydantic import BaseModel, Field
-
+from pydantic import BaseModel, Field, ConfigDict
 
 __all__ = ['Card', 'Bill', 'EnergyFees']
 
@@ -16,8 +15,7 @@ class Card(BaseModel):
     amount: float = Field(title="账户余额")
     """账户余额"""
 
-    class Config:
-        title = '校园卡及其账单信息'
+    model_config = ConfigDict(title="校园卡及其账单信息")
 
 
 class Bill(BaseModel):
@@ -35,8 +33,7 @@ class Bill(BaseModel):
     acc_amount: float = Field(title="账户余额")
     """账户余额"""
 
-    class Config:
-        title = "某次消费账单信息"
+    model_config = ConfigDict(title="某次消费账单信息")
 
 
 class EnergyFees(BaseModel):
@@ -45,12 +42,11 @@ class EnergyFees(BaseModel):
     """
     balance: float = Field(title="账户余额")
     """账户余额"""
-    electricity_subsidy: Optional[float] = Field(title="电剩余补助（仅虎溪校区拥有）")
+    electricity_subsidy: Optional[float] = Field(default=None, title="电剩余补助（仅虎溪校区拥有）")
     """电剩余补助（仅虎溪校区拥有）"""
-    water_subsidy: Optional[float] = Field(title="水剩余补助（仅虎溪校区拥有）")
+    water_subsidy: Optional[float] = Field(default=None, title="水剩余补助（仅虎溪校区拥有）")
     """水剩余补助（仅虎溪校区拥有）"""
-    subsidies: Optional[float] = Field(title="补助余额（仅老校区拥有）")
+    subsidies: Optional[float] = Field(default=None, title="补助余额（仅老校区拥有）")
     """补助余额（仅老校区拥有）"""
 
-    class Config:
-        title = "某宿舍的水电费相关信息"
+    model_config = ConfigDict(title="某宿舍的水电费相关信息")
