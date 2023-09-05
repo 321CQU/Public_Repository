@@ -1,7 +1,7 @@
 from typing import Optional, List
 import datetime
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 from .course import Course
 
@@ -17,8 +17,7 @@ class Invigilator(BaseModel):
     dept: str = Field(title="监考员所在学院")
     """监考员所在学院（可能是简称，如 数统）"""
 
-    class Config:
-        title = "监考员信息"
+    model_config = ConfigDict(title="监考员信息")
 
 
 class Exam(BaseModel):
@@ -35,7 +34,7 @@ class Exam(BaseModel):
     """选课系统中考试批次的内部id"""
     building: str = Field(title="考场楼栋")
     """考场楼栋"""
-    floor: Optional[int] = Field(title="考场楼层")
+    floor: Optional[int] = Field(default=None, title="考场楼层")
     """考场楼层"""
     room: str = Field(title="考场地点")
     """考场地点"""
@@ -57,8 +56,7 @@ class Exam(BaseModel):
     """考生座号"""
     chief_invi: List[Invigilator] = Field(title="监考员")
     """监考员"""
-    asst_invi: Optional[List[Invigilator]] = Field(title="副监考员")
+    asst_invi: Optional[List[Invigilator]] = Field(default=None, title="副监考员")
     """副监考员"""
 
-    class Config:
-        title = "考试信息"
+    model_config = ConfigDict(title="考试信息")

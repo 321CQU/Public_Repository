@@ -1,5 +1,4 @@
-from pydantic import BaseModel, Field
-
+from pydantic import BaseModel, Field, ConfigDict
 
 __all__ = ['Period']
 
@@ -13,5 +12,4 @@ class Period(BaseModel):
     end: int = Field(title="终止值")
     """终止值"""
 
-    class Config:
-        title = "时间段"
+    model_config = ConfigDict(title="时间段")
