@@ -26,6 +26,34 @@ services:
     networks:
       - persist
 
+  edu-admin-center:
+    container_name: 321cqu-edu-admin-center
+    image: ${EDU_ADMIN_CENTER_IMAGE}
+    expose:
+      - ${EDU_ADMIN_CENTER_EXPOSE_PORT}
+    restart: always
+    volumes:
+      - ${EDU_ADMIN_CENTER_HOME_DIR}/config:/src/utils/config
+      - ${_321CQU_PUBLIC_REPOSITORY_PATH}/python_package:/_321CQU_package
+    environment:
+      PYTHONPATH: /_321CQU_package
+    networks:
+      - persist
+
+  mycqu-service:
+    container_name: 321cqu-mycqu-service
+    image: ${MYCQU_SERVICE_IMAGE}
+    expose:
+      - ${MYCQU_SERVICE_EXPOSE_PORT}
+    restart: always
+    volumes:
+      - ${MYCQU_SERVICE_HOME_DIR}/config:/src/utils/config
+      - ${_321CQU_PUBLIC_REPOSITORY_PATH}/python_package:/_321CQU_package
+    environment:
+      PYTHONPATH: /_321CQU_package
+    networks:
+      - persist
+
 networks:
   persist:
     external:
