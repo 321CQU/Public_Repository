@@ -29,9 +29,6 @@ public struct ControlCenter_HomepageResponse {
   /// 封面图片信息列表，请按照回传顺序显示
   public var homepages: [ControlCenter_HomepageResponse.HomepageInfo] = []
 
-  /// 上次更新的时间，秒级时间戳
-  public var lastUpdateTime: UInt32 = 0
-
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public struct HomepageInfo {
@@ -166,7 +163,6 @@ extension ControlCenter_HomepageResponse: SwiftProtobuf.Message, SwiftProtobuf._
   public static let protoMessageName: String = _protobuf_package + ".HomepageResponse"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "homepages"),
-    2: .standard(proto: "last_update_time"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -176,7 +172,6 @@ extension ControlCenter_HomepageResponse: SwiftProtobuf.Message, SwiftProtobuf._
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeRepeatedMessageField(value: &self.homepages) }()
-      case 2: try { try decoder.decodeSingularUInt32Field(value: &self.lastUpdateTime) }()
       default: break
       }
     }
@@ -186,15 +181,11 @@ extension ControlCenter_HomepageResponse: SwiftProtobuf.Message, SwiftProtobuf._
     if !self.homepages.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.homepages, fieldNumber: 1)
     }
-    if self.lastUpdateTime != 0 {
-      try visitor.visitSingularUInt32Field(value: self.lastUpdateTime, fieldNumber: 2)
-    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: ControlCenter_HomepageResponse, rhs: ControlCenter_HomepageResponse) -> Bool {
     if lhs.homepages != rhs.homepages {return false}
-    if lhs.lastUpdateTime != rhs.lastUpdateTime {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

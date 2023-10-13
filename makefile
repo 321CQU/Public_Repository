@@ -6,6 +6,7 @@ ADDITIONAL_FILE = common.proto
 
 PY_TARGET_DIR = ./proto_build/python
 SWIFT_TARGET_DIR = ./proto_build/swift
+PY_PACKAGE_DIR = ./python_package
 
 
 PYTHON_SRC = $(shell find $(foreach dir, $(LAUNCH_PYTHON_DIR), $(BASE_DIR)/$(dir) ) -name "*.proto") $(BASE_DIR)/$(ADDITIONAL_FILE)
@@ -23,6 +24,7 @@ python: | $(PY_TARGET_DIR)/.
 	$(PYTHON_SRC)
 	find $(PY_TARGET_DIR) -type d -exec touch {}/__init__.py \;
 	rm -f $(PY_TARGET_DIR)/__init__.py;
+	cp -r $(PY_TARGET_DIR)/* $(PY_PACKAGE_DIR)/
 
 swift: | $(SWIFT_TARGET_DIR)/.
 	protoc $(SWIFT_SRC) \
