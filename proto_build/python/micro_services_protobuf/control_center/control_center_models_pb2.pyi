@@ -21,9 +21,11 @@ class HomepageResponse(_message.Message):
             NONE: _ClassVar[HomepageResponse.HomepageInfo.JumpType]
             MD: _ClassVar[HomepageResponse.HomepageInfo.JumpType]
             URL: _ClassVar[HomepageResponse.HomepageInfo.JumpType]
+            WECHAT_MINI_PROGRAM: _ClassVar[HomepageResponse.HomepageInfo.JumpType]
         NONE: HomepageResponse.HomepageInfo.JumpType
         MD: HomepageResponse.HomepageInfo.JumpType
         URL: HomepageResponse.HomepageInfo.JumpType
+        WECHAT_MINI_PROGRAM: HomepageResponse.HomepageInfo.JumpType
         IMG_URL_FIELD_NUMBER: _ClassVar[int]
         IMG_POS_FIELD_NUMBER: _ClassVar[int]
         JUMP_TYPE_FIELD_NUMBER: _ClassVar[int]

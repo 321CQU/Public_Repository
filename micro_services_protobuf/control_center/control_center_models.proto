@@ -14,6 +14,7 @@ message HomepageResponse {
             NONE = 0;   // 不跳转
             MD = 1;     // 跳转markdown页面
             URL = 2;    // 跳转url
+            WECHAT_MINI_PROGRAM = 3;    // 跳转微信小程序
         }
 
         string img_url = 1;  // 封面图片标识符（无路径前缀），如：/img/xxx.jpg

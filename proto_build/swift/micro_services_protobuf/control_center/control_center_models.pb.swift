@@ -92,6 +92,9 @@ public struct ControlCenter_HomepageResponse {
 
       /// 跳转url
       case url // = 2
+
+      /// 跳转微信小程序
+      case wechatMiniProgram // = 3
       case UNRECOGNIZED(Int)
 
       public init() {
@@ -103,6 +106,7 @@ public struct ControlCenter_HomepageResponse {
         case 0: self = .none
         case 1: self = .md
         case 2: self = .url
+        case 3: self = .wechatMiniProgram
         default: self = .UNRECOGNIZED(rawValue)
         }
       }
@@ -112,6 +116,7 @@ public struct ControlCenter_HomepageResponse {
         case .none: return 0
         case .md: return 1
         case .url: return 2
+        case .wechatMiniProgram: return 3
         case .UNRECOGNIZED(let i): return i
         }
       }
@@ -140,6 +145,7 @@ extension ControlCenter_HomepageResponse.HomepageInfo.JumpType: CaseIterable {
     .none,
     .md,
     .url,
+    .wechatMiniProgram,
   ]
 }
 
@@ -256,5 +262,6 @@ extension ControlCenter_HomepageResponse.HomepageInfo.JumpType: SwiftProtobuf._P
     0: .same(proto: "NONE"),
     1: .same(proto: "MD"),
     2: .same(proto: "URL"),
+    3: .same(proto: "WECHAT_MINI_PROGRAM"),
   ]
 }

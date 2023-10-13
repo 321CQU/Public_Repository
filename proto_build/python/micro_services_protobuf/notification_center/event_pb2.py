@@ -19,7 +19,6 @@ _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'micro_services_protobuf.notification_center.event_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
-
   DESCRIPTOR._options = None
   _globals['_NOTIFICATION_EVENT']._serialized_start=435
   _globals['_NOTIFICATION_EVENT']._serialized_end=485

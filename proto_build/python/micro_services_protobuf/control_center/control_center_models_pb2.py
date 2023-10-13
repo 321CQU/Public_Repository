@@ -13,20 +13,19 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\nBmicro_services_protobuf/control_center/control_center_models.proto\x12\x0e\x63ontrol_center\"\xfb\x02\n\x10HomepageResponse\x12@\n\thomepages\x18\x01 \x03(\x0b\x32-.control_center.HomepageResponse.HomepageInfo\x12\x18\n\x10last_update_time\x18\x02 \x01(\r\x1a\x8a\x02\n\x0cHomepageInfo\x12\x0f\n\x07img_url\x18\x01 \x01(\t\x12\x45\n\x07img_pos\x18\x02 \x01(\x0e\x32\x34.control_center.HomepageResponse.HomepageInfo.ImgPos\x12I\n\tjump_type\x18\x03 \x01(\x0e\x32\x36.control_center.HomepageResponse.HomepageInfo.JumpType\x12\x12\n\njump_param\x18\x04 \x01(\t\"\x1c\n\x06ImgPos\x12\t\n\x05LOCAL\x10\x00\x12\x07\n\x03\x43OS\x10\x01\"%\n\x08JumpType\x12\x08\n\x04NONE\x10\x00\x12\x06\n\x02MD\x10\x01\x12\x07\n\x03URL\x10\x02\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\nBmicro_services_protobuf/control_center/control_center_models.proto\x12\x0e\x63ontrol_center\"\x94\x03\n\x10HomepageResponse\x12@\n\thomepages\x18\x01 \x03(\x0b\x32-.control_center.HomepageResponse.HomepageInfo\x12\x18\n\x10last_update_time\x18\x02 \x01(\r\x1a\xa3\x02\n\x0cHomepageInfo\x12\x0f\n\x07img_url\x18\x01 \x01(\t\x12\x45\n\x07img_pos\x18\x02 \x01(\x0e\x32\x34.control_center.HomepageResponse.HomepageInfo.ImgPos\x12I\n\tjump_type\x18\x03 \x01(\x0e\x32\x36.control_center.HomepageResponse.HomepageInfo.JumpType\x12\x12\n\njump_param\x18\x04 \x01(\t\"\x1c\n\x06ImgPos\x12\t\n\x05LOCAL\x10\x00\x12\x07\n\x03\x43OS\x10\x01\">\n\x08JumpType\x12\x08\n\x04NONE\x10\x00\x12\x06\n\x02MD\x10\x01\x12\x07\n\x03URL\x10\x02\x12\x17\n\x13WECHAT_MINI_PROGRAM\x10\x03\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'micro_services_protobuf.control_center.control_center_models_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
-
   DESCRIPTOR._options = None
   _globals['_HOMEPAGERESPONSE']._serialized_start=87
-  _globals['_HOMEPAGERESPONSE']._serialized_end=466
+  _globals['_HOMEPAGERESPONSE']._serialized_end=491
   _globals['_HOMEPAGERESPONSE_HOMEPAGEINFO']._serialized_start=200
-  _globals['_HOMEPAGERESPONSE_HOMEPAGEINFO']._serialized_end=466
+  _globals['_HOMEPAGERESPONSE_HOMEPAGEINFO']._serialized_end=491
   _globals['_HOMEPAGERESPONSE_HOMEPAGEINFO_IMGPOS']._serialized_start=399
   _globals['_HOMEPAGERESPONSE_HOMEPAGEINFO_IMGPOS']._serialized_end=427
   _globals['_HOMEPAGERESPONSE_HOMEPAGEINFO_JUMPTYPE']._serialized_start=429
-  _globals['_HOMEPAGERESPONSE_HOMEPAGEINFO_JUMPTYPE']._serialized_end=466
+  _globals['_HOMEPAGERESPONSE_HOMEPAGEINFO_JUMPTYPE']._serialized_end=491
 # @@protoc_insertion_point(module_scope)
