@@ -20,7 +20,6 @@ _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'micro_services_protobuf.course_score_query.model_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
-
   DESCRIPTOR._options = None
   _globals['_FINDCOURSEBYNAMEREQUEST']._serialized_start=135
   _globals['_FINDCOURSEBYNAMEREQUEST']._serialized_end=225
