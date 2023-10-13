@@ -20,7 +20,6 @@ _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'micro_services_protobuf.mycqu_service.mycqu_request_response_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
-
   DESCRIPTOR._options = None
   _FETCHENROLLCOURSEINFORESPONSE_RESULTENTRY._options = None
   _FETCHENROLLCOURSEINFORESPONSE_RESULTENTRY._serialized_options = b'8\001'
