@@ -2,10 +2,13 @@ from .ConfigHandler import ConfigHandler, _CONFIG_HANDLER
 from .Singleton import Singleton
 
 from ..service import ServiceEnum
+from ..service_handler import ServiceHandler
 
 
 class HttpServiceManager(metaclass=Singleton):
     def __init__(self, handler: ConfigHandler = _CONFIG_HANDLER):
+        # 初始化时创建每个ServiceHandler子类的实例
+        self.service_instances = [cls() for cls in ServiceHandler.__subclasses__()]
         all_options = handler.get_options('ServiceSetting')
 
         service_hosts = list(filter(lambda x: x.endswith('_http_host'), all_options))
@@ -26,8 +29,8 @@ class HttpServiceManager(metaclass=Singleton):
     def host(self, service: ServiceEnum) -> str:
         if not service.is_http_service:
             raise RuntimeError("该服务不是http服务")
-
-        host = self._service_host[service.service_name + "_http_host"]
-        port = self._service_ports[service.service_name + "_http_port"]
-
-        return host + ":" + port
+        for instance in self.service_instances:
+            if instance.support(name=service):
+                host = self._service_host[instance.get_service_name + "_http_host"]
+                port = self._service_ports[instance.get_service_name + "_http_port"]
+                return host + ":" + port
