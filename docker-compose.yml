@@ -51,6 +51,10 @@ services:
       - ${_321CQU_PUBLIC_REPOSITORY_PATH}/python_package:/_321CQU_package
     environment:
       PYTHONPATH: /_321CQU_package
+      PROXY_PASSWORD: ${PROXY_PASSWORD}
+      PROXY_USERNAME: ${PROXY_USERNAME}
+      PROXY_SECRET_ID: ${PROXY_SECRET_ID}
+      PROXY_SIGNATURE: ${PROXY_SIGNATURE}
     networks:
       - persist
 
