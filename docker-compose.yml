@@ -47,7 +47,8 @@ services:
       - ${MYCQU_SERVICE_EXPOSE_PORT}
     restart: always
     volumes:
-      - ${MYCQU_SERVICE_HOME_DIR}/config:/src/utils/config
+      - ${MYCQU_SERVICE_HOME_DIR}/logs:/app/logs
+      - ${MYCQU_SERVICE_HOME_DIR}/config:/app/config
       - ${_321CQU_PUBLIC_REPOSITORY_PATH}/python_package:/_321CQU_package
     environment:
       PYTHONPATH: /_321CQU_package
