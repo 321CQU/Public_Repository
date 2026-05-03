@@ -19,7 +19,7 @@ clone:
 steps:
   - name: clone
     environment:
-      ENV_FILE_PATH: ./.env
+      ENV_FILE_PATH: ./.env.example
     commands:
       - git config --global http.proxy http://127.0.0.1:7890
       - git config --global https.proxy http://127.0.0.1:7890
@@ -32,6 +32,8 @@ steps:
       - cp -a -r -f ./python_package/micro_services_protobuf/ $${_321CQU_PUBLIC_REPOSITORY_PATH}/python_package/
       - cp -a -r -f ./proto_build/python/micro_services_protobuf $${_321CQU_PUBLIC_REPOSITORY_PATH}/python_package/
       - cp -a -r -f ./docker-compose.yml $${_321CQU_PUBLIC_REPOSITORY_PATH}/
+      - cp -a -r -f ./prometheus/ $${_321CQU_PUBLIC_REPOSITORY_PATH}/prometheus/
+      - cp -a -r -f ./grafana/ $${_321CQU_PUBLIC_REPOSITORY_PATH}/grafana/
       - cp -a -r -f $ENV_FILE_PATH $${_321CQU_PUBLIC_REPOSITORY_PATH}/
 
 trigger:
