@@ -67,6 +67,7 @@ services:
     restart: always
     volumes:
       - ${_321CQU_PUBLIC_REPOSITORY_PATH}/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ${_321CQU_PUBLIC_REPOSITORY_PATH}/prometheus/token:/etc/prometheus/token:ro
       - prometheus-data:/prometheus
     command:
       - --config.file=/etc/prometheus/prometheus.yml
