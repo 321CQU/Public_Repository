@@ -31,6 +31,7 @@ services:
     image: ${EDU_ADMIN_CENTER_IMAGE}
     expose:
       - ${EDU_ADMIN_CENTER_EXPOSE_PORT}
+      - ${EDU_ADMIN_CENTER_METRICS_PORT}
     restart: always
     volumes:
       - ${EDU_ADMIN_CENTER_HOME_DIR}/config:/src/utils/config
@@ -45,6 +46,7 @@ services:
     image: ${MYCQU_SERVICE_IMAGE}
     expose:
       - ${MYCQU_SERVICE_EXPOSE_PORT}
+      - ${MYCQU_SERVICE_METRICS_PORT}
     restart: always
     volumes:
       - ${MYCQU_SERVICE_HOME_DIR}/logs:/app/logs
