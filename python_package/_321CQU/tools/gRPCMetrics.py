@@ -59,7 +59,10 @@ def _status_code(error: Exception | None) -> str:
     return grpc.StatusCode.UNKNOWN.name
 
 
-def _split_rpc_method(path: str) -> tuple[str, str]:
+def _split_rpc_method(path: str | bytes) -> tuple[str, str]:
+    if isinstance(path, bytes):
+        path = path.decode("ascii", errors="ignore")
+
     normalized = path.strip("/")
     if "/" not in normalized:
         return "unknown", normalized or "unknown"
