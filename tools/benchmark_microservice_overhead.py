@@ -80,7 +80,11 @@ async def _benchmark_gateway(args):
 
     async def call():
         req = urllib_request.Request(args.gateway_score_url, data=payload, headers=headers, method="POST")
-        await asyncio.to_thread(urllib_request.urlopen, req, timeout=args.http_timeout)
+        def open_and_read():
+            with urllib_request.urlopen(req, timeout=args.http_timeout) as response:
+                response.read()
+
+        await asyncio.to_thread(open_and_read)
 
     return await _time_async("gateway_fetch_score", args.iterations, call)
 

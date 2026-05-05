@@ -12,6 +12,7 @@ __all__ = [
     "GRPC_CLIENT_REQUESTS",
     "GRPC_SERVER_DURATION",
     "GRPC_SERVER_REQUESTS",
+    "GRPCMetricsClientInterceptor",
     "GRPCMetricsServerInterceptor",
     "instrument_grpc_callable",
     "start_metrics_server",
@@ -43,7 +44,7 @@ GRPC_SERVER_REQUESTS = Counter(
 )
 
 
-def _status_code(error: BaseException | None) -> str:
+def _status_code(error: Exception | None) -> str:
     if error is None:
         return grpc.StatusCode.OK.name
 
@@ -75,10 +76,10 @@ def instrument_grpc_callable(
 ) -> Callable[..., Awaitable]:
     async def wrapped(*args, **kwargs):
         start = time.perf_counter()
-        error: BaseException | None = None
+        error: Exception | None = None
         try:
             return await func(*args, **kwargs)
-        except BaseException as exc:
+        except Exception as exc:
             error = exc
             raise
         finally:
@@ -88,6 +89,27 @@ def instrument_grpc_callable(
             GRPC_CLIENT_REQUESTS.labels(caller, service, method, status_code).inc()
 
     return wrapped
+
+
+class GRPCMetricsClientInterceptor(grpc.aio.UnaryUnaryClientInterceptor):
+    def __init__(self, caller: str):
+        self._caller = caller
+
+    async def intercept_unary_unary(self, continuation, client_call_details, request):
+        service, method = _split_rpc_method(client_call_details.method)
+        start = time.perf_counter()
+        error: Exception | None = None
+        try:
+            call = await continuation(client_call_details, request)
+            return await call
+        except Exception as exc:
+            error = exc
+            raise
+        finally:
+            status_code = _status_code(error)
+            duration = time.perf_counter() - start
+            GRPC_CLIENT_DURATION.labels(self._caller, service, method, status_code).observe(duration)
+            GRPC_CLIENT_REQUESTS.labels(self._caller, service, method, status_code).inc()
 
 
 class GRPCMetricsServerInterceptor(grpc.aio.ServerInterceptor):
@@ -100,10 +122,10 @@ class GRPCMetricsServerInterceptor(grpc.aio.ServerInterceptor):
 
         async def unary_unary(request, context):
             start = time.perf_counter()
-            error: BaseException | None = None
+            error: Exception | None = None
             try:
                 return await handler.unary_unary(request, context)
-            except BaseException as exc:
+            except Exception as exc:
                 error = exc
                 raise
             finally:
@@ -122,7 +144,8 @@ class GRPCMetricsServerInterceptor(grpc.aio.ServerInterceptor):
 async def _handle_metrics_request(reader: asyncio.StreamReader, writer: asyncio.StreamWriter) -> None:
     try:
         request_line = await reader.readline()
-        path = request_line.decode("ascii", errors="ignore").split(" ")[1]
+        request_parts = request_line.decode("ascii", errors="ignore").split()
+        path = request_parts[1] if len(request_parts) >= 2 else ""
         while await reader.readline() not in {b"\r\n", b"\n", b""}:
             pass
 
@@ -155,7 +178,11 @@ async def start_metrics_server(port: int | str | None, host: str = "0.0.0.0") ->
     if port is None:
         return None
 
-    port_value = int(port)
+    try:
+        port_value = int(port)
+    except (TypeError, ValueError) as exc:
+        raise RuntimeError(f"Invalid metrics port: {port!r}") from exc
+
     if port_value <= 0:
         return None
 
