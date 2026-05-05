@@ -31,12 +31,14 @@ services:
     image: ${EDU_ADMIN_CENTER_IMAGE}
     expose:
       - ${EDU_ADMIN_CENTER_EXPOSE_PORT}
+      - ${EDU_ADMIN_CENTER_METRICS_PORT}
     restart: always
     volumes:
       - ${EDU_ADMIN_CENTER_HOME_DIR}/config:/src/utils/config
       - ${_321CQU_PUBLIC_REPOSITORY_PATH}/python_package:/_321CQU_package
     environment:
       PYTHONPATH: /_321CQU_package
+      METRICS_PORT: ${EDU_ADMIN_CENTER_METRICS_PORT}
     networks:
       - persist
 
@@ -45,6 +47,7 @@ services:
     image: ${MYCQU_SERVICE_IMAGE}
     expose:
       - ${MYCQU_SERVICE_EXPOSE_PORT}
+      - ${MYCQU_SERVICE_METRICS_PORT}
     restart: always
     volumes:
       - ${MYCQU_SERVICE_HOME_DIR}/logs:/app/logs
@@ -52,6 +55,7 @@ services:
       - ${_321CQU_PUBLIC_REPOSITORY_PATH}/python_package:/_321CQU_package
     environment:
       PYTHONPATH: /_321CQU_package
+      METRICS_ADDR: 0.0.0.0:${MYCQU_SERVICE_METRICS_PORT}
       PROXY_PASSWORD: ${PROXY_PASSWORD}
       PROXY_USERNAME: ${PROXY_USERNAME}
       PROXY_SECRET_ID: ${PROXY_SECRET_ID}
