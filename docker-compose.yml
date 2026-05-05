@@ -92,6 +92,7 @@ services:
     volumes:
       - grafana-data:/var/lib/grafana
       - ${_321CQU_PUBLIC_REPOSITORY_PATH}/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ${_321CQU_PUBLIC_REPOSITORY_PATH}/grafana/dashboards:/etc/grafana/dashboards:ro
     environment:
       GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER}
       GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD}
