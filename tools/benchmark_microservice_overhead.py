@@ -20,6 +20,15 @@ def _percentile(values, percent):
 
 
 def _summary(values):
+    if not values:
+        return {
+            "count": 0,
+            "avg_ms": 0.0,
+            "p50_ms": 0.0,
+            "p95_ms": 0.0,
+            "p99_ms": 0.0,
+        }
+
     return {
         "count": len(values),
         "avg_ms": round(statistics.fmean(values) * 1000, 3),

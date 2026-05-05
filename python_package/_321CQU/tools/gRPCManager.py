@@ -51,7 +51,7 @@ class gRPCManager(metaclass=Singleton):
             self._service_ports.update({
                 port: handler.get_config("ServiceSetting", port)
             })
-        self._channels: dict[ServiceEnum, Channel] = {}
+        self._channels: dict[str, Channel] = {}
         self._caller = caller or os.getenv("SERVICE_NAME", "unknown")
 
     def get_service_config(self, service: ServiceEnum) -> Tuple[str, str]:
@@ -59,15 +59,16 @@ class gRPCManager(metaclass=Singleton):
                 self._service_ports[service.service_name + "_service_port"])
 
     def _get_channel(self, service: ServiceEnum) -> Channel:
-        channel = self._channels.get(service)
-        if channel is not None:
-            return channel
-
         host = self._service_host[service.service_name + "_service_host"]
         port = self._service_ports[service.service_name + "_service_port"]
         target_url = host + ":" + port
+
+        channel = self._channels.get(target_url)
+        if channel is not None:
+            return channel
+
         channel = insecure_channel(target_url)
-        self._channels[service] = channel
+        self._channels[target_url] = channel
         return channel
 
     async def close_all(self) -> None:
