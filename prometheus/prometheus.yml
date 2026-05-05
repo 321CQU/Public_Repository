@@ -14,10 +14,10 @@ scrape_configs:
     metrics_path: /metrics
     static_configs:
       - targets:
-          - mycqu-service:93211
+          - mycqu-service:9321
 
   - job_name: edu-admin-center
     metrics_path: /metrics
     static_configs:
       - targets:
-          - edu-admin-center:93212
+          - edu-admin-center:9322
