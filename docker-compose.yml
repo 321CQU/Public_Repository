@@ -23,7 +23,6 @@ services:
       - ${_321CQU_PUBLIC_REPOSITORY_PATH}/python_package:/_321CQU_package
     environment:
       PYTHONPATH: /_321CQU_package
-      METRICS_PORT: ${EDU_ADMIN_CENTER_METRICS_PORT}
     networks:
       - persist
 
@@ -39,6 +38,7 @@ services:
       - ${_321CQU_PUBLIC_REPOSITORY_PATH}/python_package:/_321CQU_package
     environment:
       PYTHONPATH: /_321CQU_package
+      METRICS_PORT: ${EDU_ADMIN_CENTER_METRICS_PORT}
     networks:
       - persist
 
